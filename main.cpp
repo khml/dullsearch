@@ -1,7 +1,8 @@
-#include <iostream>
+#include <tinylexer/symbol.hpp>
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    auto words = tinylex::toWords("Hello, World!");
+    tinylex::printWords(words);
     return 0;
 }
