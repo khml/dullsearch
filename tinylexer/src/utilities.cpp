@@ -5,7 +5,7 @@
 #include <regex>
 #include <string>
 
-#include "tinylexer/utilities.hpp"
+#include <tinylexer/utilities.hpp>
 
 using std::regex;
 using std::string;
