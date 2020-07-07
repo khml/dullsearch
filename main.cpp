@@ -1,4 +1,4 @@
-#include <tinylexer/symbol.hpp>
+#include <tinylexer/lexer.hpp>
 
 int main()
 {

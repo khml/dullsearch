@@ -5,6 +5,7 @@
 #ifndef TINYLEXER_SYMBOL_HPP
 #define TINYLEXER_SYMBOL_HPP
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -58,23 +59,11 @@ namespace tinylex
         EXCLAMATION, /* ! */
         IDENTIFIER, /*  */
         };
+
+        Symbol toSymbol(const std::string& val);
+
+        std::map<std::string, Symbol> toSymbolMap();
     }
-
-    symbol::Symbol toSymbol(const std::string& val);
-
-    std::vector<std::string> toWords(const std::string& line);
-
-    void printWords(const std::vector<std::string>& words);
-
-    size_t readNumber(size_t indicator, const std::string& line, std::vector<std::string>& words);
-
-    size_t readIdentifier(size_t indicator, const std::string& line, std::vector<std::string>& words);
-
-    size_t readString(
-        size_t indicator, const std::string& mark, std::vector<std::string>& words, const std::string& line);
-
-    size_t readMultiCharOperator(size_t indicator, const std::string& line, std::vector<std::string>& words,
-        const std::string& ch, size_t symSize);
 }
 
 #endif //TINYLEXER_SYMBOL_HPP
