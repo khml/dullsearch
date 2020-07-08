@@ -3,6 +3,7 @@
 //
 
 #include <algorithm>
+#include <iostream>
 
 #include <tinylexer/wordid/utilities.hpp>
 
@@ -13,5 +14,18 @@ namespace wordid
         std::sort(strContainer.begin(), strContainer.end());
         auto last = std::unique(strContainer.begin(), strContainer.end());
         strContainer.erase(last, strContainer.end());
+    }
+
+    template<>
+    void printVec(const std::vector<std::string>& container)
+    {
+        std::cout << "[ ";
+        for(const std::string& word : container)
+        {
+            std::cout << '"' << word << '"';
+            if (word != container.back())
+                std::cout << ", ";
+        }
+        std::cout << " ]" << std::endl;
     }
 }

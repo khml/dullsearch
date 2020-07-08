@@ -2,8 +2,8 @@
 // Created by KHML on 2020/07/05.
 //
 
-#ifndef TINYLEXER_SYMBOL_HPP
-#define TINYLEXER_SYMBOL_HPP
+#ifndef TINYLEXER_LEXER_SYMBOL_HPP
+#define TINYLEXER_LEXER_SYMBOL_HPP
 
 #include <map>
 #include <string>
@@ -66,4 +66,4 @@ namespace tinylex
     }
 }
 
-#endif //TINYLEXER_SYMBOL_HPP
+#endif //TINYLEXER_LEXER_SYMBOL_HPP

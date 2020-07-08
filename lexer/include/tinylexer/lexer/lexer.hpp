@@ -2,17 +2,15 @@
 // Created by KHML on 2020/07/07.
 //
 
-#ifndef TINYLEXER_LEXER_HPP
-#define TINYLEXER_LEXER_HPP
+#ifndef TINYLEXER_LEXER_LEXER_HPP
+#define TINYLEXER_LEXER_LEXER_HPP
 
 #include <string>
 #include <vector>
 
 namespace tinylex
 {
-    std::vector<std::string> toWords(const std::string& line);
-
-    void printWords(const std::vector<std::string>& words);
+    std::vector<std::string> lex(const std::string& line);
 
     size_t readNumber(size_t indicator, const std::string& line, std::vector<std::string>& words);
 
@@ -25,4 +23,4 @@ namespace tinylex
         const std::string& ch, size_t symSize);
 }
 
-#endif //TINYLEXER_LEXER_HPP
+#endif //TINYLEXER_LEXER_LEXER_HPP

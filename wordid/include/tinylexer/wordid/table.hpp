@@ -2,8 +2,8 @@
 // Created by KHML on 2020/07/07.
 //
 
-#ifndef TINYLEXER_TABLE_HPP
-#define TINYLEXER_TABLE_HPP
+#ifndef TINYLEXER_WORDID_TABLE_HPP
+#define TINYLEXER_WORDID_TABLE_HPP
 
 #include <string>
 #include <unordered_map>
@@ -45,8 +45,6 @@ namespace wordid
 
         void set_id(const std::string& word);
     };
-
-    void printIds(const std::vector<size_t>& ids);
 }
 
-#endif //TINYLEXER_TABLE_HPP
+#endif //TINYLEXER_WORDID_TABLE_HPP

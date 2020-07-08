@@ -2,6 +2,7 @@
 // Created by KHML on 2020/07/06.
 //
 
+#include <iostream>
 #include <regex>
 #include <string>
 
@@ -34,5 +35,17 @@ namespace tinylex
     {
         static regex re("[_a-zA-Z][_a-zA-Z0-9]?");
         return regex_match(str, re);
+    }
+
+    void printStringVec(const std::vector<std::string>& words)
+    {
+        std::cout << "[ ";
+        for(const std::string& word : words)
+        {
+            std::cout << '"' << word << '"';
+            if (word != words.back())
+                std::cout << ", ";
+        }
+        std::cout << " ]" << std::endl;
     }
 }
