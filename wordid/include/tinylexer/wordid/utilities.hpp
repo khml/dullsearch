@@ -12,6 +12,8 @@ namespace wordid
 {
     void uniqSort(std::vector<size_t>& strContainer);
 
+    std::string toStr(const std::vector<size_t>& ids);
+
     template<typename T>
     void printVec(const std::vector<T>& container);
 

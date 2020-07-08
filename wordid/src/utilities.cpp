@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <utility>
 
 #include <tinylexer/wordid/utilities.hpp>
 
@@ -27,5 +28,17 @@ namespace wordid
                 std::cout << ", ";
         }
         std::cout << " ]" << std::endl;
+    }
+
+    std::string toStr(const std::vector<size_t>& ids)
+    {
+        std::string str;
+        for (const size_t& id: ids)
+        {
+            str += std::to_string(id);
+            if (id != ids.back())
+                str += ", ";
+        }
+        return std::move(str);
     }
 }
