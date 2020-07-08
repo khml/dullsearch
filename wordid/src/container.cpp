@@ -31,6 +31,15 @@ namespace wordid
         return hashmap[word].id;
     }
 
+    std::vector<size_t> Container::get_ids(const std::vector<std::string>& words)
+    {
+        std::vector<size_t> ids;
+        ids.reserve(words.size());
+        for (const std::string& word : words)
+            ids.emplace_back(get_id(word));
+        return std::move(ids);
+    }
+
     std::unordered_map<std::string, size_t> Container::unwrap()
     {
         std::unordered_map<std::string, size_t> container;

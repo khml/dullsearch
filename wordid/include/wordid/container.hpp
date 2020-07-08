@@ -22,6 +22,8 @@ namespace wordid
 
         size_t get_id(const std::string& word);
 
+        std::vector<size_t> get_ids(const std::vector<std::string>& words);
+
         std::unordered_map<std::string, size_t> unwrap();
 
         void print();
