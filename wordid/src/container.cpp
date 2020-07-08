@@ -17,6 +17,7 @@ namespace wordid
 
     Container::Container(const std::vector<std::string>& words) :Container()
     {
+        hashmap.reserve(words.size());
         for (const auto& word : words)
             set_id(word);
     }
@@ -33,6 +34,7 @@ namespace wordid
     std::unordered_map<std::string, size_t> Container::unwrap()
     {
         std::unordered_map<std::string, size_t> container;
+        container.reserve(hashmap.size());
         for (auto& item : hashmap)
             container[item.first] = item.second.id;
         return std::move(container);
