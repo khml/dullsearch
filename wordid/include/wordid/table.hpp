@@ -2,25 +2,29 @@
 // Created by KHML on 2020/07/07.
 //
 
-#ifndef TINYLEXER_CONTAINER_HPP
-#define TINYLEXER_CONTAINER_HPP
+#ifndef TINYLEXER_TABLE_HPP
+#define TINYLEXER_TABLE_HPP
 
 #include <string>
 #include <unordered_map>
 #include <vector>
 
+#include <wordid/utilities.hpp>
+
 namespace wordid
 {
-    class Container
+    class WordIdTable
     {
     public:
-        Container();
+        WordIdTable();
 
-        explicit Container(const std::vector<std::string>& words);
+        explicit WordIdTable(const std::vector<std::string>& words);
 
-        virtual ~Container();
+        virtual ~WordIdTable();
 
         size_t get_id(const std::string& word);
+
+        std::vector<size_t> get_ids(const std::vector<std::string>& words);
 
         std::unordered_map<std::string, size_t> unwrap();
 
@@ -41,6 +45,8 @@ namespace wordid
 
         void set_id(const std::string& word);
     };
+
+    void printIds(const std::vector<size_t>& ids);
 }
 
-#endif //TINYLEXER_CONTAINER_HPP
+#endif //TINYLEXER_TABLE_HPP
