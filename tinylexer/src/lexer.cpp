@@ -144,7 +144,7 @@ namespace tinylex
         std::cout << "[ ";
         for(const std::string& word : words)
         {
-            std::cout << "\"" << word << "\"";
+            std::cout << '"' << word << '"';
             if (word != words.back())
                 std::cout << ", ";
         }
