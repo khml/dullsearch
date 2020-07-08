@@ -4,7 +4,7 @@
 
 #include <algorithm>
 
-#include <tinylexer/symbol.hpp>
+#include <tinylexer/lexer/symbol.hpp>
 
 using std::string;
 

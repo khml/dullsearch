@@ -4,9 +4,9 @@
 
 #include <iostream>
 
-#include <tinylexer/lexer.hpp>
-#include <tinylexer/symbol.hpp>
-#include <tinylexer/utilities.hpp>
+#include <tinylexer/lexer/lexer.hpp>
+#include <tinylexer/lexer/symbol.hpp>
+#include <tinylexer/lexer/utilities.hpp>
 
 using std::string;
 

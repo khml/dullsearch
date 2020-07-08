@@ -4,7 +4,7 @@
 
 #include <algorithm>
 
-#include <wordid/utilities.hpp>
+#include <tinylexer/wordid/utilities.hpp>
 
 namespace wordid
 {

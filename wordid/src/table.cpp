@@ -5,7 +5,7 @@
 #include <iostream>
 #include <utility>
 
-#include <wordid/table.hpp>
+#include <tinylexer/wordid/table.hpp>
 
 namespace wordid
 {

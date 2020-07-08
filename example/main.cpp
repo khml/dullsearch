@@ -1,5 +1,5 @@
-#include <tinylexer/lexer.hpp>
-#include <wordid/table.hpp>
+#include <tinylexer/lexer/lexer.hpp>
+#include <tinylexer/wordid/table.hpp>
 
 int main()
 {
