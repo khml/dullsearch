@@ -5,24 +5,24 @@
 #include <iostream>
 #include <utility>
 
-#include <wordid/container.hpp>
+#include <wordid/table.hpp>
 
 namespace wordid
 {
-    Container::Container() :id_counter(1)
+    WordIdTable::WordIdTable() :id_counter(1)
     {}
 
-    Container::~Container()
+    WordIdTable::~WordIdTable()
     = default;
 
-    Container::Container(const std::vector<std::string>& words) :Container()
+    WordIdTable::WordIdTable(const std::vector<std::string>& words) :WordIdTable()
     {
         hashmap.reserve(words.size());
         for (const auto& word : words)
             set_id(word);
     }
 
-    size_t Container::get_id(const std::string& word)
+    size_t WordIdTable::get_id(const std::string& word)
     {
         if (exist(word))
             return hashmap[word].id;
@@ -31,7 +31,7 @@ namespace wordid
         return hashmap[word].id;
     }
 
-    std::vector<size_t> Container::get_ids(const std::vector<std::string>& words)
+    std::vector<size_t> WordIdTable::get_ids(const std::vector<std::string>& words)
     {
         std::vector<size_t> ids;
         ids.reserve(words.size());
@@ -40,7 +40,7 @@ namespace wordid
         return std::move(ids);
     }
 
-    std::unordered_map<std::string, size_t> Container::unwrap()
+    std::unordered_map<std::string, size_t> WordIdTable::unwrap()
     {
         std::unordered_map<std::string, size_t> container;
         container.reserve(hashmap.size());
@@ -49,7 +49,7 @@ namespace wordid
         return std::move(container);
     }
 
-    void Container::print()
+    void WordIdTable::print()
     {
         std::cout << "{ ";
         size_t size = hashmap.size();
@@ -63,12 +63,12 @@ namespace wordid
         std::cout << " }" << std::endl;
     }
 
-    inline bool Container::exist(const std::string& word)
+    inline bool WordIdTable::exist(const std::string& word)
     {
         return (hashmap[word].id > NON_EXIST_ID);
     }
 
-    void Container::set_id(const std::string& word)
+    void WordIdTable::set_id(const std::string& word)
     {
         if (exist(word))
             return;
