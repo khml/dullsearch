@@ -20,7 +20,7 @@ namespace wordid
     void printVec(const std::vector<std::string>& container)
     {
         std::cout << "[ ";
-        for(const std::string& word : container)
+        for (const std::string& word : container)
         {
             std::cout << '"' << word << '"';
             if (word != container.back())

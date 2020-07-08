@@ -37,7 +37,7 @@ namespace wordid
             size_t id = NON_EXIST_ID;
         };
 
-        size_t id_counter;
+        size_t id_counter{1};
 
         std::unordered_map<std::string, WordId> hashmap;
 
