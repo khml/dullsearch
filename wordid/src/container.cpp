@@ -74,4 +74,16 @@ namespace wordid
             return;
         hashmap[word] = WordId{id_counter++};
     }
+
+    void printIds(const std::vector<size_t>& ids)
+    {
+        std::cout << "[ ";
+        for (const size_t& id: ids)
+        {
+            std::cout << id;
+            if (id != ids.back())
+                std::cout << ", ";
+        }
+        std::cout << " ]" << std::endl;
+    }
 }

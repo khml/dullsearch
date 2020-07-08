@@ -9,6 +9,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <wordid/utilities.hpp>
+
 namespace wordid
 {
     class Container
@@ -43,6 +45,8 @@ namespace wordid
 
         void set_id(const std::string& word);
     };
+
+    void printIds(const std::vector<size_t>& ids);
 }
 
 #endif //TINYLEXER_CONTAINER_HPP
