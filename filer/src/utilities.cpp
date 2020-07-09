@@ -8,11 +8,20 @@
 
 namespace tinylex
 {
-    bool isDir(const std::string& path)
+    mode_t getMode(const std::string& path)
     {
         struct ::stat st;
         stat(path.c_str(), &st);
-        bool result = ((st.st_mode & S_IFMT) == S_IFDIR);
-        return result;
+        return (st.st_mode & S_IFMT);
+    }
+
+    bool isDir(const std::string& path)
+    {
+        return (getMode(path) == S_IFDIR);
+    }
+
+    bool isReg(const std::string& path)
+    {
+        return (getMode(path) == S_IFREG);
     }
 }
