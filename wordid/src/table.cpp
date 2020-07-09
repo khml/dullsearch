@@ -5,17 +5,17 @@
 #include <iostream>
 #include <utility>
 
-#include <wordid/table.hpp>
+#include <tinylexer/wordid/table.hpp>
 
 namespace wordid
 {
-    WordIdTable::WordIdTable() :id_counter(1)
+    WordIdTable::WordIdTable()
     {}
 
     WordIdTable::~WordIdTable()
     = default;
 
-    WordIdTable::WordIdTable(const std::vector<std::string>& words) :WordIdTable()
+    WordIdTable::WordIdTable(const std::vector<std::string>& words)
     {
         hashmap.reserve(words.size());
         for (const auto& word : words)
@@ -73,17 +73,5 @@ namespace wordid
         if (exist(word))
             return;
         hashmap[word] = WordId{id_counter++};
-    }
-
-    void printIds(const std::vector<size_t>& ids)
-    {
-        std::cout << "[ ";
-        for (const size_t& id: ids)
-        {
-            std::cout << id;
-            if (id != ids.back())
-                std::cout << ", ";
-        }
-        std::cout << " ]" << std::endl;
     }
 }

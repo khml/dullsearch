@@ -2,8 +2,10 @@
 // Created by KHML on 2020/07/06.
 //
 
-#ifndef TINYLEXER_UTILITIES_HPP
-#define TINYLEXER_UTILITIES_HPP
+#ifndef TINYLEXER_LEXER_UTILITIES_HPP
+#define TINYLEXER_LEXER_UTILITIES_HPP
+
+#include <string>
 
 namespace tinylex
 {
@@ -14,6 +16,8 @@ namespace tinylex
     bool isDouble(const std::string& str);
 
     bool isIdentifier(const std::string& str);
+
+    void printStringVec(const std::vector<std::string>& words);
 }
 
-#endif //TINYLEXER_UTILITIES_HPP
+#endif //TINYLEXER_LEXER_UTILITIES_HPP

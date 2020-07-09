@@ -1,16 +1,15 @@
 //
-// Created by KHML on 2020/07/08.
+// Created by KHML on 2020/07/09.
 //
 
 #ifndef TINYLEXER_UTILITIES_HPP
 #define TINYLEXER_UTILITIES_HPP
 
 #include <string>
-#include <vector>
 
-namespace wordid
+namespace tinylex
 {
-    void uniqSort(std::vector<size_t>& strContainer);
+    bool isDir(const std::string& path);
 }
 
 #endif //TINYLEXER_UTILITIES_HPP

@@ -6,21 +6,19 @@ example code
 // main.cpp
 
 #include <tinylexer/lexer.hpp>
-#include <wordid/table.hpp>
+#include <tinylexer/wordid.hpp>
 
 int main()
 {
-    // a string line to a vector of string
-    std::vector<std::string> words = tinylex::toWords("Hello, World! This is a Hello World program");
-    tinylex::printWords(words); // show result
+    std::vector<std::string> words = tinylex::lex("Hello, World! This is a Hello World program");
+    wordid::printVec(words); // show result
 
     wordid::WordIdTable table; // create word id table
     auto ids = table.get_ids(words); // get ids from words
-    table.print();  // show table
-    wordid::printIds(ids);
+    table.print(); // show table
+    wordid::printVec(ids);
     wordid::uniqSort(ids);
-    wordid::printIds(ids);
-
+    wordid::printVec(ids);
     return 0;
 }
 

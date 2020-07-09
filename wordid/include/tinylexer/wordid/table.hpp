@@ -2,14 +2,14 @@
 // Created by KHML on 2020/07/07.
 //
 
-#ifndef TINYLEXER_TABLE_HPP
-#define TINYLEXER_TABLE_HPP
+#ifndef TINYLEXER_WORDID_TABLE_HPP
+#define TINYLEXER_WORDID_TABLE_HPP
 
 #include <string>
 #include <unordered_map>
 #include <vector>
 
-#include <wordid/utilities.hpp>
+#include <tinylexer/wordid/utilities.hpp>
 
 namespace wordid
 {
@@ -37,7 +37,7 @@ namespace wordid
             size_t id = NON_EXIST_ID;
         };
 
-        size_t id_counter;
+        size_t id_counter{1};
 
         std::unordered_map<std::string, WordId> hashmap;
 
@@ -45,8 +45,6 @@ namespace wordid
 
         void set_id(const std::string& word);
     };
-
-    void printIds(const std::vector<size_t>& ids);
 }
 
-#endif //TINYLEXER_TABLE_HPP
+#endif //TINYLEXER_WORDID_TABLE_HPP

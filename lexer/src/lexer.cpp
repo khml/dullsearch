@@ -2,17 +2,15 @@
 // Created by KHML on 2020/07/07.
 //
 
-#include <iostream>
-
-#include <tinylexer/lexer.hpp>
-#include <tinylexer/symbol.hpp>
-#include <tinylexer/utilities.hpp>
+#include <tinylexer/lexer/lexer.hpp>
+#include <tinylexer/lexer/symbol.hpp>
+#include <tinylexer/lexer/utilities.hpp>
 
 using std::string;
 
 namespace tinylex
 {
-    std::vector<std::string> toWords(const string& line)
+    std::vector<std::string> lex(const string& line)
     {
         std::vector<string> words;
 
@@ -137,17 +135,5 @@ namespace tinylex
 
         words.emplace_back(std::move(multiCharOp));
         return indicator;
-    }
-
-    void printWords(const std::vector<std::string>& words)
-    {
-        std::cout << "[ ";
-        for(const std::string& word : words)
-        {
-            std::cout << '"' << word << '"';
-            if (word != words.back())
-                std::cout << ", ";
-        }
-        std::cout << " ]" << std::endl;
     }
 }
