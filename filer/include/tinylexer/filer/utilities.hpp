@@ -10,6 +10,8 @@
 namespace tinylex
 {
     bool isDir(const std::string& path);
+
+    bool isReg(const std::string& path);
 }
 
 #endif //TINYLEXER_UTILITIES_HPP
