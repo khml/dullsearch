@@ -10,4 +10,5 @@ add_subdirectory(lexer)
 add_subdirectory(wordid)
 add_subdirectory(filer)
 
+add_subdirectory(test)
 add_subdirectory(example)
