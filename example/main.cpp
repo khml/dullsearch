@@ -2,6 +2,7 @@
 
 #include <tinylexer/lexer.hpp>
 #include <tinylexer/wordid.hpp>
+#include <tinylexer/filer.hpp>
 
 int main()
 {
@@ -11,5 +12,6 @@ int main()
     wordid::uniqSort(ids);
     wordid::printVec(ids);
     std::cout << wordid::toStr(ids) << std::endl;
+    tinylex::printStringVec(tinylex::listDir("."));
     return 0;
 }
