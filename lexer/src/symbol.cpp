@@ -56,7 +56,7 @@ namespace tinylex
                 {"*/", COMMENT_END},
                 {"->", ARROW},
                 {"=>", FAT_ARROW},
-                {"!", EXCLAMATION},
+                {"!",  EXCLAMATION},
             };
         }
 

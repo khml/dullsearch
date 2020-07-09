@@ -15,49 +15,49 @@ namespace tinylex
     {
         enum Symbol
         {
-        ADD, /* + */
-        SUB, /* - */
-        ASTERISK, /* * */
-        SLASH, /* / */
-        AT, /* @ */
-        EQUAL, /* = */
-        PARENTHESISE_RIGHT, /* ) */
-        PARENTHESIS_LEFT, /* ( */
-        BRACKET_RIGHT, /* ] */
-        BRACKET_LEFT, /* [ */
-        BRACE_RIGHT, /* } */
-        BRACE_LEFT, /* { */
-        DOT, /* . */
-        COMMA, /* , */
-        COLON, /* : */
-        SEMICOLON, /* ; */
-        INTERROGATION, /* ? */
-        GRATER_THAN, /* > */
-        LESSER_THAN, /* < */
-        APOSTROPHE, /* \' */
-        QUOTATION, /* \" */
-        AMPERSAND, /* & */
-        PERCENT, /* % */
-        DOLLAR, /* $ */
-        SHARP, /* # */
-        PIPE, /* | */
-        UNDER_BAR, /* _ */
-        BACKSLASH, /* \\ */
-        WHITESPACE, /*   */
-        NEW_LINE, /* \n */
-        EQUIVALENCE, /* == */
-        GRATER, /* >= */
-        LESSER, /* <= */
-        INCREMENTAL, /* ++ */
-        DECREMENTAL, /* -- */
-        AND, /* && */
-        OR, /* || */
-        COMMENT_START, // /*
-        COMMENT_END, // */
-        ARROW, /* -> */
-        FAT_ARROW, /* => */
-        EXCLAMATION, /* ! */
-        IDENTIFIER, /*  */
+            ADD, /* + */
+            SUB, /* - */
+            ASTERISK, /* * */
+            SLASH, /* / */
+            AT, /* @ */
+            EQUAL, /* = */
+            PARENTHESISE_RIGHT, /* ) */
+            PARENTHESIS_LEFT, /* ( */
+            BRACKET_RIGHT, /* ] */
+            BRACKET_LEFT, /* [ */
+            BRACE_RIGHT, /* } */
+            BRACE_LEFT, /* { */
+            DOT, /* . */
+            COMMA, /* , */
+            COLON, /* : */
+            SEMICOLON, /* ; */
+            INTERROGATION, /* ? */
+            GRATER_THAN, /* > */
+            LESSER_THAN, /* < */
+            APOSTROPHE, /* \' */
+            QUOTATION, /* \" */
+            AMPERSAND, /* & */
+            PERCENT, /* % */
+            DOLLAR, /* $ */
+            SHARP, /* # */
+            PIPE, /* | */
+            UNDER_BAR, /* _ */
+            BACKSLASH, /* \\ */
+            WHITESPACE, /*   */
+            NEW_LINE, /* \n */
+            EQUIVALENCE, /* == */
+            GRATER, /* >= */
+            LESSER, /* <= */
+            INCREMENTAL, /* ++ */
+            DECREMENTAL, /* -- */
+            AND, /* && */
+            OR, /* || */
+            COMMENT_START, // /*
+            COMMENT_END, // */
+            ARROW, /* -> */
+            FAT_ARROW, /* => */
+            EXCLAMATION, /* ! */
+            IDENTIFIER, /*  */
         };
 
         Symbol toSymbol(const std::string& val);

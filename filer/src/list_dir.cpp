@@ -16,7 +16,7 @@ namespace tinylex
         if(dirPtr == NULL)
         {
             ::closedir(dirPtr);
-            return std::move(files);
+            return files;
         }
 
         struct ::dirent* entry = NULL;
@@ -27,6 +27,6 @@ namespace tinylex
             entry = ::readdir(dirPtr);
         }
         closedir(dirPtr);
-        return std::move(files);
+        return files;
     }
 }

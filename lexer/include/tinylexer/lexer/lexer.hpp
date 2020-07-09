@@ -12,14 +12,14 @@ namespace tinylex
 {
     std::vector<std::string> lex(const std::string& line);
 
-    size_t readNumber(size_t indicator, const std::string& line, std::vector<std::string>& words);
+    void readNumber(size_t& indicator, const std::string& line, std::vector<std::string>& words);
 
-    size_t readIdentifier(size_t indicator, const std::string& line, std::vector<std::string>& words);
+    void readIdentifier(size_t& indicator, const std::string& line, std::vector<std::string>& words);
 
-    size_t readString(
-        size_t indicator, const std::string& mark, std::vector<std::string>& words, const std::string& line);
+    void readString(
+        size_t& indicator, const std::string& mark, std::vector<std::string>& words, const std::string& line);
 
-    size_t readMultiCharOperator(size_t indicator, const std::string& line, std::vector<std::string>& words,
+    void readMultiCharOperator(size_t& indicator, const std::string& line, std::vector<std::string>& words,
         const std::string& ch, size_t symSize);
 }
 

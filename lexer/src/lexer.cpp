@@ -25,9 +25,9 @@ namespace tinylex
             {
                 case symbol::IDENTIFIER:
                     if (isDigit(ch))
-                        indicator = readNumber(indicator, line, words);
+                        readNumber(indicator, line, words);
                     else
-                        indicator = readIdentifier(indicator, line, words);
+                        readIdentifier(indicator, line, words);
                     break;
                 case symbol::WHITESPACE:
                     break;
@@ -51,10 +51,10 @@ namespace tinylex
                     break;
             }
         }
-        return std::move(words);
+        return words;
     }
 
-    size_t readNumber(size_t indicator, const string& line, std::vector<string>& words)
+    void readNumber(size_t& indicator, const string& line, std::vector<string>& words)
     {
         int start = indicator;
         bool isDotAppeared = false;
@@ -82,10 +82,9 @@ namespace tinylex
         ch = line.substr(start, indicator - start);
         --indicator;
         words.emplace_back(std::move(ch));
-        return indicator;
     }
 
-    size_t readIdentifier(size_t indicator, const string& line, std::vector<string>& words)
+    void readIdentifier(size_t& indicator, const string& line, std::vector<string>& words)
     {
         int start = indicator++;
         for (; indicator < line.size(); indicator++)
@@ -96,35 +95,30 @@ namespace tinylex
                 break;
             }
         }
-        words.emplace_back(std::move(line.substr(start, (indicator - start + 1))));
-        return indicator;
+        words.emplace_back(line.substr(start, (indicator - start + 1)));
     }
 
-    size_t readString(size_t indicator, const string& line, std::vector<string>& words, const std::string& mark)
+    void readString(size_t& indicator, const string& line, std::vector<string>& words, const std::string& mark)
     {
         int start = indicator++;
         for (; indicator < line.size(); indicator++)
         {
             auto ch = line.substr(indicator, 1);
-            if (ch == "\\")
+            if (mark == ch)
             {
-                indicator++;
-                continue;
-            }
-            if (ch == mark)
-            {
-                words.emplace_back(line.substr(start + 1, (indicator - start - 1)));
-                return indicator;
+                auto str = line.substr(start + 1, (indicator - start - 1));
+                words.emplace_back(str);
+                return;
             }
         }
         throw ("expected : " + mark + " but not given.");
     }
 
-    size_t readMultiCharOperator(size_t indicator, const string& line, std::vector<string>& words,
+    void readMultiCharOperator(size_t& indicator, const string& line, std::vector<string>& words,
         const std::string& ch, const size_t symSize)
     {
         if (indicator + symSize - 1 >= line.size())
-            return indicator;
+            return;
 
         auto multiCharOp = line.substr(indicator, symSize);
 
@@ -134,6 +128,6 @@ namespace tinylex
             indicator++;
 
         words.emplace_back(std::move(multiCharOp));
-        return indicator;
+        return;
     }
 }

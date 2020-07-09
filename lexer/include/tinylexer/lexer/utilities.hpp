@@ -16,8 +16,6 @@ namespace tinylex
     bool isDouble(const std::string& str);
 
     bool isIdentifier(const std::string& str);
-
-    void printStringVec(const std::vector<std::string>& words);
 }
 
 #endif //TINYLEXER_LEXER_UTILITIES_HPP
