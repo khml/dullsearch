@@ -39,6 +39,6 @@ namespace wordid
             if (id != ids.back())
                 str += ", ";
         }
-        return std::move(str);
+        return str;
     }
 }

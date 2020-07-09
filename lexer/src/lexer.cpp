@@ -51,7 +51,7 @@ namespace tinylex
                     break;
             }
         }
-        return std::move(words);
+        return words;
     }
 
     void readNumber(size_t& indicator, const string& line, std::vector<string>& words)

@@ -4,6 +4,7 @@ set(PROJECT_NAME tinylexer)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "-Wall")
 
 add_subdirectory(lexer)
 add_subdirectory(wordid)

@@ -37,7 +37,7 @@ namespace wordid
         ids.reserve(words.size());
         for (const std::string& word : words)
             ids.emplace_back(get_id(word));
-        return std::move(ids);
+        return ids;
     }
 
     std::unordered_map<std::string, size_t> WordIdTable::unwrap()
@@ -46,7 +46,7 @@ namespace wordid
         container.reserve(hashmap.size());
         for (auto& item : hashmap)
             container[item.first] = item.second.id;
-        return std::move(container);
+        return container;
     }
 
     void WordIdTable::print()
