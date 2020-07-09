@@ -21,10 +21,10 @@ namespace wordid
     void printVec(const std::vector<std::string>& container)
     {
         std::cout << "[ ";
-        for (const std::string& word : container)
+        for (size_t idx = 0; idx < container.size(); idx++)
         {
-            std::cout << '"' << word << '"';
-            if (word != container.back())
+            std::cout << '"' << container[idx] << '"';
+            if (idx < container.size() - 1)
                 std::cout << ", ";
         }
         std::cout << " ]" << std::endl;
@@ -33,10 +33,10 @@ namespace wordid
     std::string toStr(const std::vector<size_t>& ids)
     {
         std::string str;
-        for (const size_t& id: ids)
+        for (size_t idx = 0; idx < ids.size(); idx++)
         {
-            str += std::to_string(id);
-            if (id != ids.back())
+            str += std::to_string(ids[idx]);
+            if (idx < ids.size() - 1)
                 str += ", ";
         }
         return str;

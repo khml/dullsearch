@@ -8,11 +8,11 @@ int main()
 {
     wordid::WordIdTable table;
     std::vector<std::string> words = tinylex::lex("Hello, World! This is a Hello World program");
-    tinylex::printStringVec(words);
+    wordid::printVec(words);
     std::vector<std::size_t> ids = table.get_ids(words);
     wordid::uniqSort(ids);
     wordid::printVec(ids);
     std::cout << wordid::toStr(ids) << std::endl;
-    tinylex::printStringVec(tinylex::listDir("."));
+    wordid::printVec(tinylex::listDir("."));
     return 0;
 }
