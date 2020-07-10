@@ -103,7 +103,7 @@ namespace tinylex
     void readString(size_t& indicator, const string& line, std::vector<string>& words, const std::string& mark)
     {
         int start = indicator++;
-        for (; indicator < line.size(); indicator++)
+        for (; indicator < line.length(); indicator++)
         {
             auto ch = line.substr(indicator, 1);
             if (mark == ch)

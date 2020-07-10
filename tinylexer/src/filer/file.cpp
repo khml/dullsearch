@@ -5,11 +5,10 @@
 #include <fstream>
 #include <stdexcept>
 
-#include <tinylexer/filer/read_file.hpp>
+#include <tinylexer/filer/file.hpp>
 
 namespace tinylex
 {
-
     std::vector<std::string> readFile(const std::string& filepath)
     {
         std::ifstream file(filepath);
@@ -23,6 +22,18 @@ namespace tinylex
             lines.emplace_back(line);
 
         return lines;
+    }
+
+    void writeLinesToFile(const std::string& filepath, const std::vector<std::string>& lines)
+    {
+        std::ofstream file(filepath);
+        if (file.fail())
+            throw std::runtime_error("Failed to open file : " + filepath);
+
+        for (const std::string& line:lines)
+        {
+            file << line << std::endl;
+        }
     }
 
     std::string readFileToStr(const std::string& filepath)

@@ -17,7 +17,7 @@ namespace tinylex
     void readIdentifier(size_t& indicator, const std::string& line, std::vector<std::string>& words);
 
     void readString(
-        size_t& indicator, const std::string& mark, std::vector<std::string>& words, const std::string& line);
+        size_t& indicator, const std::string& line, std::vector<std::string>& words, const std::string& mark);
 
     void readMultiCharOperator(size_t& indicator, const std::string& line, std::vector<std::string>& words,
         const std::string& ch, size_t symSize);
