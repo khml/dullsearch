@@ -10,7 +10,7 @@
 namespace tinylex
 {
     WordIdTable::WordIdTable()
-    {}
+    = default;
 
     WordIdTable::~WordIdTable()
     = default;
