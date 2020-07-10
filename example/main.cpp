@@ -6,13 +6,15 @@
 
 int main()
 {
-    wordid::WordIdTable table;
     std::vector<std::string> words = tinylex::lex("Hello, World! This is a Hello World program");
-    wordid::printVec(words);
-    std::vector<std::size_t> ids = table.get_ids(words);
-    wordid::uniqSort(ids);
-    wordid::printVec(ids);
-    std::cout << wordid::toStr(ids) << std::endl;
-    wordid::printVec(tinylex::listDir("."));
+    tinylex::printVec(words); // show lexing result
+
+    tinylex::WordIdTable table; // create word id table
+    std::vector<std::size_t> ids = table.get_ids(words); // get ids from words
+    tinylex::uniqSort(ids); //sort and uniq vector of id
+    tinylex::printVec(ids); // show ids
+    std::cout << tinylex::toStr(ids) << std::endl;
+
+    tinylex::printVec(tinylex::listDir(".")); // show current dir
     return 0;
 }
