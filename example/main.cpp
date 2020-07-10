@@ -16,5 +16,7 @@ int main()
     std::string content = tinylex::readFileToStr("Makefile");
     ids = table.getIdsWithUniqSort(tinylex::lex(content));
     tinylex::printVec(ids); // show ids
+
+    tinylex::printVec(tinylex::splitByComma("1, \"2\", ',3', a'4', 5"));
     return 0;
 }

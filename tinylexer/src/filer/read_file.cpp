@@ -9,7 +9,6 @@
 
 namespace tinylex
 {
-
     std::vector<std::string> readFile(const std::string& filepath)
     {
         std::ifstream file(filepath);
