@@ -6,4 +6,4 @@ project(${PROJECT_NAME})
 # example app
 set(EXAMPLE_APP example)
 add_executable(${EXAMPLE_APP} main.cpp)
-target_link_libraries(${EXAMPLE_APP} lexer wordid filer)
+target_link_libraries(${EXAMPLE_APP} tinylex)
