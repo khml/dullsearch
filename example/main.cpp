@@ -17,8 +17,7 @@ int main()
 
     tinylex::printVec(tinylex::listDir(".")); // show current dir
     std::string content = tinylex::readFileToStr("Makefile");
-    ids = table.get_ids(tinylex::lex(content));
-    tinylex::uniqSort(ids);
+    ids = table.get_ids_with_uniq_sort(tinylex::lex(content));
     tinylex::printVec(ids); // show ids
     return 0;
 }

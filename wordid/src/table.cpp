@@ -40,6 +40,13 @@ namespace tinylex
         return ids;
     }
 
+    std::vector<size_t> WordIdTable::get_ids_with_uniq_sort(const std::vector<std::string>& words)
+    {
+        auto ids = get_ids(words);
+        uniqSort(ids);
+        return ids;
+    }
+
     std::unordered_map<std::string, size_t> WordIdTable::unwrap()
     {
         std::unordered_map<std::string, size_t> container;
