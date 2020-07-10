@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace wordid
+namespace tinylex
 {
     void uniqSort(std::vector<size_t>& strContainer);
 

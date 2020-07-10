@@ -7,7 +7,7 @@
 
 #include <tinylexer/wordid/table.hpp>
 
-namespace wordid
+namespace tinylex
 {
     WordIdTable::WordIdTable()
     {}

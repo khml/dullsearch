@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-namespace wordid
+namespace tinylex
 {
     template<typename T>
     void printVec(const std::vector<T>& container)
