@@ -2,6 +2,8 @@
 // Created by KHML on 2020/07/07.
 //
 
+#include <stdexcept>
+
 #include <tinylexer/lexer/lexer.hpp>
 #include <tinylexer/lexer/symbol.hpp>
 #include <tinylexer/lexer/utilities.hpp>
@@ -111,7 +113,7 @@ namespace tinylex
                 return;
             }
         }
-        throw ("expected : " + mark + " but not given.");
+        throw std::runtime_error("expected : " + mark + " but not given.");
     }
 
     void readMultiCharOperator(size_t& indicator, const string& line, std::vector<string>& words,
@@ -128,6 +130,5 @@ namespace tinylex
             indicator++;
 
         words.emplace_back(std::move(multiCharOp));
-        return;
     }
 }
