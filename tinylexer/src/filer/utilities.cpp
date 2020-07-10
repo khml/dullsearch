@@ -10,7 +10,7 @@ namespace tinylex
 {
     mode_t getMode(const std::string& path)
     {
-        struct ::stat st;
+        struct ::stat st{};
         stat(path.c_str(), &st);
         return (st.st_mode & S_IFMT);
     }

@@ -1,9 +1,6 @@
 #include <iostream>
 
-#include <tinylexer/lexer.hpp>
-#include <tinylexer/wordid.hpp>
-#include <tinylexer/filer.hpp>
-
+#include <tinylexer.hpp>
 int main()
 {
     std::vector<std::string> words = tinylex::lex("Hello, World! This is a Hello World program");

@@ -13,15 +13,15 @@ namespace tinylex
     {
         std::vector<std::string> files;
         DIR* dirPtr = opendir(path.c_str());
-        if(dirPtr == NULL)
+        if(dirPtr == nullptr)
         {
             ::closedir(dirPtr);
             return files;
         }
 
-        struct ::dirent* entry = NULL;
+        struct ::dirent* entry = nullptr;
         entry = ::readdir(dirPtr);
-        while (entry != NULL)
+        while (entry != nullptr)
         {
             files.emplace_back(std::string(entry->d_name));
             entry = ::readdir(dirPtr);
