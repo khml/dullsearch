@@ -3,7 +3,7 @@
 //
 
 #include <tinylexer/filer/read_csv.hpp>
-#include <tinylexer/filer/read_file.hpp>
+#include <tinylexer/filer/file.hpp>
 #include <tinylexer/filer/utilities.hpp>
 
 namespace tinylex
