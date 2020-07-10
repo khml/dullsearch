@@ -22,11 +22,11 @@ namespace tinylex
 
         virtual ~WordIdTable();
 
-        size_t get_id(const std::string& word);
+        size_t getId(const std::string& word);
 
-        std::vector<size_t> get_ids(const std::vector<std::string>& words);
+        std::vector<size_t> getIds(const std::vector<std::string>& words);
 
-        std::vector<size_t> get_ids_with_uniq_sort(const std::vector<std::string>& words);
+        std::vector<size_t> getIdsWithUniqSort(const std::vector<std::string>& words);
 
         std::unordered_map<std::string, size_t> unwrap();
 

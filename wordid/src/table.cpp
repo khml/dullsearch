@@ -22,7 +22,7 @@ namespace tinylex
             set_id(word);
     }
 
-    size_t WordIdTable::get_id(const std::string& word)
+    size_t WordIdTable::getId(const std::string& word)
     {
         if (exist(word))
             return hashmap[word].id;
@@ -31,18 +31,18 @@ namespace tinylex
         return hashmap[word].id;
     }
 
-    std::vector<size_t> WordIdTable::get_ids(const std::vector<std::string>& words)
+    std::vector<size_t> WordIdTable::getIds(const std::vector<std::string>& words)
     {
         std::vector<size_t> ids;
         ids.reserve(words.size());
         for (const std::string& word : words)
-            ids.emplace_back(get_id(word));
+            ids.emplace_back(getId(word));
         return ids;
     }
 
-    std::vector<size_t> WordIdTable::get_ids_with_uniq_sort(const std::vector<std::string>& words)
+    std::vector<size_t> WordIdTable::getIdsWithUniqSort(const std::vector<std::string>& words)
     {
-        auto ids = get_ids(words);
+        auto ids = getIds(words);
         uniqSort(ids);
         return ids;
     }
