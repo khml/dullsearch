@@ -2,7 +2,6 @@
 // Created by KHML on 2020/07/06.
 //
 
-#include <iostream>
 #include <regex>
 #include <string>
 
@@ -33,7 +32,7 @@ namespace tinylex
 
     bool isIdentifier(const string& str)
     {
-        static regex re("[_a-zA-Z][_a-zA-Z0-9]?");
+        static regex re("[_a-zA-Z][_a-zA-Z0-9]*");
         return regex_match(str, re);
     }
 }
