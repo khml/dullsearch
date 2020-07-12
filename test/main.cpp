@@ -276,11 +276,11 @@ TEST(TestDocumentIdTable, lookupFiles)
     ASSERT_THAT(table.lookupFiles("This"), testing::Contains(filepathB));
 
     table.setIds(filepathC);
-    ASSERT_THAT(table.lookupFiles("Hello"), testing::Contains(filepathA));
-    ASSERT_THAT(table.lookupFiles("Hello"), testing::Contains(filepathC));
+    ASSERT_THAT(table.lookupFiles("Hello"),
+        testing::UnorderedElementsAre(testing::Eq(filepathA), testing::Eq(filepathC)));
     ASSERT_THAT(table.lookupFiles("Hello"), testing::Not(testing::Contains(filepathB)));
 
     ASSERT_THAT(table.lookupFiles("program"), testing::Contains(filepathC));
-    ASSERT_THAT(table.lookupFiles("program"), testing::Not(testing::Contains(filepathA)));
-    ASSERT_THAT(table.lookupFiles("program"), testing::Not(testing::Contains(filepathB)));
+    ASSERT_THAT(table.lookupFiles("program"),
+        testing::Not(testing::UnorderedElementsAre(testing::Eq(filepathA), testing::Eq(filepathB))));
 }
