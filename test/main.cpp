@@ -251,3 +251,36 @@ TEST(TestWordIdTable, clear)
     table.clear();
     ASSERT_EQ(table.getId("world"), 1);
 }
+
+TEST(TestDocumentIdTable, lookupFiles)
+{
+    const std::string filepathA = "TestDocumentIdTable_lookupFiles_a.txt";
+    const std::string filepathB = "TestDocumentIdTable_lookupFiles_b.txt";
+    const std::string filepathC = "TestDocumentIdTable_lookupFiles_c.txt";
+    std::ofstream fileA(filepathA);
+    std::ofstream fileB(filepathB);
+    std::ofstream fileC(filepathC);
+    fileA << "Hello World" << std::endl;
+    fileB << "This Is" << std::endl;
+    fileC << "Hello World program" << std::endl;
+    fileA.flush();
+    fileB.flush();
+    fileC.flush();
+
+    tinylex::DocumentIdTable table;
+    table.setIds(filepathA);
+    table.setIds(filepathB);
+
+    ASSERT_THAT(table.lookupFiles("Hello"), testing::Contains(filepathA));
+    ASSERT_THAT(table.lookupFiles("This"), testing::Not(testing::Contains(filepathA)));
+    ASSERT_THAT(table.lookupFiles("This"), testing::Contains(filepathB));
+
+    table.setIds(filepathC);
+    ASSERT_THAT(table.lookupFiles("Hello"), testing::Contains(filepathA));
+    ASSERT_THAT(table.lookupFiles("Hello"), testing::Contains(filepathC));
+    ASSERT_THAT(table.lookupFiles("Hello"), testing::Not(testing::Contains(filepathB)));
+
+    ASSERT_THAT(table.lookupFiles("program"), testing::Contains(filepathC));
+    ASSERT_THAT(table.lookupFiles("program"), testing::Not(testing::Contains(filepathA)));
+    ASSERT_THAT(table.lookupFiles("program"), testing::Not(testing::Contains(filepathB)));
+}
