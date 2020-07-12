@@ -18,7 +18,7 @@ namespace tinylex
     public:
         WordIdTable();
 
-        explicit WordIdTable(const std::vector<std::string>& words);
+        explicit WordIdTable(const std::string& filepath);
 
         virtual ~WordIdTable();
 
@@ -51,9 +51,11 @@ namespace tinylex
 
         size_t id_counter{1};
 
-        std::unordered_map<std::string, WordId> hashmap;
+        std::unordered_map<std::string, WordId> table;
 
         void set_id(const std::string& word);
+
+        inline size_t emitId();
     };
 }
 
