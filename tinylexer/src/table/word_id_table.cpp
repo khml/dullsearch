@@ -25,7 +25,7 @@ namespace tinylex
 
     size_t WordIdTable::getId(const std::string& word)
     {
-        if (exist(word))
+        if (contain(word))
             return hashmap[word].id;
 
         hashmap[word].id = id_counter++;
@@ -46,6 +46,11 @@ namespace tinylex
         auto ids = getIds(words);
         uniqSort(ids);
         return ids;
+    }
+
+    bool WordIdTable::contain(const std::string& word)
+    {
+        return (hashmap[word].id != NON_EXIST_ID);
     }
 
     std::unordered_map<std::string, size_t> WordIdTable::unwrap()
@@ -97,14 +102,9 @@ namespace tinylex
         hashmap.clear();
     }
 
-    inline bool WordIdTable::exist(const std::string& word)
-    {
-        return (hashmap[word].id > NON_EXIST_ID);
-    }
-
     void WordIdTable::set_id(const std::string& word)
     {
-        if (exist(word))
+        if (contain(word))
             return;
         hashmap[word] = WordId{id_counter++};
     }

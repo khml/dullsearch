@@ -28,6 +28,8 @@ namespace tinylex
 
         std::vector<size_t> getIdsWithUniqSort(const std::vector<std::string>& words);
 
+        bool contain(const std::string& word);
+
         std::unordered_map<std::string, size_t> unwrap();
 
         void dump(const std::string& filepath);
@@ -48,8 +50,6 @@ namespace tinylex
         size_t id_counter{1};
 
         std::unordered_map<std::string, WordId> hashmap;
-
-        inline bool exist(const std::string& word);
 
         void set_id(const std::string& word);
     };

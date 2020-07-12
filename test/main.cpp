@@ -199,6 +199,17 @@ TEST(TestWordIdTable, getIdsWithUniqSort)
     ASSERT_THAT(ids_sorted, ids);
 }
 
+TEST(TestWordIdTable, contain)
+{
+    tinylex::WordIdTable table;
+    const std::string key = "Hello";
+    ASSERT_FALSE(table.contain(key));
+    ASSERT_FALSE(table.contain(key));
+
+    table.getId(key);
+    ASSERT_TRUE(table.contain(key));
+}
+
 TEST(TestWordIdTable, unwrap)
 {
     tinylex::WordIdTable table;
