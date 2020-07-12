@@ -2,14 +2,14 @@
 // Created by KHML on 2020/07/07.
 //
 
-#ifndef TINYLEXER_WORDID_TABLE_HPP
-#define TINYLEXER_WORDID_TABLE_HPP
+#ifndef TINYLEXER_TABLE_TABLE_HPP
+#define TINYLEXER_TABLE_TABLE_HPP
 
 #include <string>
 #include <unordered_map>
 #include <vector>
 
-#include <tinylexer/wordid/utilities.hpp>
+#include <tinylexer/table/utilities.hpp>
 
 namespace tinylex
 {
@@ -55,4 +55,4 @@ namespace tinylex
     };
 }
 
-#endif //TINYLEXER_WORDID_TABLE_HPP
+#endif //TINYLEXER_TABLE_TABLE_HPP
