@@ -32,6 +32,8 @@ namespace tinylex
 
         void dump(const std::string& filepath);
 
+        void restore(const std::string& filepath);
+
         void print();
 
         void clear();

@@ -69,6 +69,14 @@ namespace tinylex
         writeLinesToFile(filepath, lines);
     }
 
+    void WordIdTable::restore(const std::string& filepath)
+    {
+        const std::vector<std::string> lines = readFile(filepath);
+        clear();
+        for (const std::string& line:lines)
+            set_id(line);
+    }
+
     void WordIdTable::print()
     {
         std::cout << "{ ";
