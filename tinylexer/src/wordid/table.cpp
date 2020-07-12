@@ -83,6 +83,12 @@ namespace tinylex
         std::cout << " }" << std::endl;
     }
 
+    void WordIdTable::clear()
+    {
+        id_counter = NON_EXIST_ID + 1;
+        hashmap.clear();
+    }
+
     inline bool WordIdTable::exist(const std::string& word)
     {
         return (hashmap[word].id > NON_EXIST_ID);

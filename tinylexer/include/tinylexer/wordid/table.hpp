@@ -34,6 +34,8 @@ namespace tinylex
 
         void print();
 
+        void clear();
+
     private:
         static const size_t NON_EXIST_ID = 0;
         struct WordId
