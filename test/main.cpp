@@ -210,6 +210,14 @@ TEST(TestWordIdTable, contain)
     ASSERT_TRUE(table.contain(key));
 }
 
+TEST(TestWordIdTable, getValue)
+{
+    tinylex::WordIdTable table;
+    const std::string key = "Hello";
+    const size_t id = table.getId(key);
+    ASSERT_EQ(table.getValue(id), key);
+}
+
 TEST(TestWordIdTable, unwrap)
 {
     tinylex::WordIdTable table;

@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <stdexcept>
 #include <utility>
 
 #include <tinylexer/table/word_id_table.hpp>
@@ -30,6 +31,17 @@ namespace tinylex
 
         hashmap[word].id = id_counter++;
         return hashmap[word].id;
+    }
+
+    std::string WordIdTable::getValue(const size_t& wordId)
+    {
+        // TODO improve this
+        for(auto& word: hashmap)
+        {
+            if (word.second.id == wordId)
+                return word.first;
+        }
+        throw std::runtime_error("NOT FOUND. wordId=" + std::to_string(wordId));
     }
 
     std::vector<size_t> WordIdTable::getIds(const std::vector<std::string>& words)

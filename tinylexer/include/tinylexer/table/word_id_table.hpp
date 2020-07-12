@@ -24,6 +24,8 @@ namespace tinylex
 
         size_t getId(const std::string& word);
 
+        std::string getValue(const size_t& wordId);
+
         std::vector<size_t> getIds(const std::vector<std::string>& words);
 
         std::vector<size_t> getIdsWithUniqSort(const std::vector<std::string>& words);
