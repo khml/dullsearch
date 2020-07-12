@@ -30,6 +30,8 @@ namespace tinylex
 
         std::unordered_map<std::string, size_t> unwrap();
 
+        void dump(const std::string& filepath);
+
         void print();
 
     private:

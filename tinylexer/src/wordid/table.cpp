@@ -6,6 +6,7 @@
 #include <utility>
 
 #include <tinylexer/wordid/table.hpp>
+#include <tinylexer/filer/file.hpp>
 
 namespace tinylex
 {
@@ -54,6 +55,18 @@ namespace tinylex
         for (auto& item : hashmap)
             container[item.first] = item.second.id;
         return container;
+    }
+
+    void WordIdTable::dump(const std::string& filepath)
+    {
+        std::vector<std::string> lines;
+        lines.resize(hashmap.size() + 1);
+        lines[NON_EXIST_ID] = "-*-TINYLEXER-HEADER-LINE-*-";
+        for (auto& item : hashmap)
+        {
+            lines[item.second.id] = item.first;
+        }
+        writeLinesToFile(filepath, lines);
     }
 
     void WordIdTable::print()
