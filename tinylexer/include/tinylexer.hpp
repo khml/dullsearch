@@ -6,7 +6,7 @@
 #define TINYLEXER_TINYLEX_HPP
 
 #include <tinylexer/lexer.hpp>
-#include <tinylexer/wordid.hpp>
+#include <tinylexer/table.hpp>
 #include <tinylexer/filer.hpp>
 
 #endif //TINYLEXER_TINYLEX_HPP

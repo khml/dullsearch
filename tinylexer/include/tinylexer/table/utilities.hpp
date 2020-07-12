@@ -2,8 +2,8 @@
 // Created by KHML on 2020/07/08.
 //
 
-#ifndef TINYLEXER_WORDID_UTILITIES_HPP
-#define TINYLEXER_WORDID_UTILITIES_HPP
+#ifndef TINYLEXER_TABLE_UTILITIES_HPP
+#define TINYLEXER_TABLE_UTILITIES_HPP
 
 #include <string>
 #include <vector>
@@ -21,6 +21,6 @@ namespace tinylex
     void printVec(const std::vector<std::string>& container);
 }
 
-#include <tinylexer/wordid/impl/utilities_impl.hpp>
+#include <tinylexer/table/impl/utilities_impl.hpp>
 
-#endif //TINYLEXER_WORDID_UTILITIES_HPP
+#endif //TINYLEXER_TABLE_UTILITIES_HPP

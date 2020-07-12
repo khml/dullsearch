@@ -6,7 +6,7 @@
 #include <iostream>
 #include <utility>
 
-#include <tinylexer/wordid/utilities.hpp>
+#include <tinylexer/table/utilities.hpp>
 
 namespace tinylex
 {
