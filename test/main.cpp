@@ -142,7 +142,7 @@ TEST(TestUtilities, isDir)
     ASSERT_TRUE(tinylex::isDir("."));
     ASSERT_TRUE(tinylex::isDir(".."));
 
-    const std::string filepath("dummy.txt");
+    const std::string filepath("TestUtilities_isDir_dummy.txt");
     std::ofstream file(filepath);
     file.flush();
     ASSERT_FALSE(tinylex::isDir(filepath));
@@ -150,7 +150,7 @@ TEST(TestUtilities, isDir)
 
 TEST(TestReadCsv, readCsvFile)
 {
-    const std::string filepath("dummy.csv");
+    const std::string filepath("TestReadCsv_readCsvFile_dummy.csv");
     std::ofstream file(filepath);
     file << "0,1,2,3,4" << std::endl;
     file.flush();
