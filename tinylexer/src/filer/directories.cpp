@@ -6,12 +6,17 @@
 #include <sys/stat.h>
 
 #include <tinylexer/filer/directories.hpp>
+#include <tinylexer/filer/utilities.hpp>
 
 namespace tinylex
 {
     std::vector<std::string> listDir(const std::string& path)
     {
         std::vector<std::string> files;
+
+        if (isDir(path))
+            return files;
+
         DIR* dirPtr = opendir(path.c_str());
         if (dirPtr == nullptr)
         {
