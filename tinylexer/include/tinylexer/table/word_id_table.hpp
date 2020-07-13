@@ -32,26 +32,25 @@ namespace tinylex
 
         bool contain(const std::string& word);
 
-        std::unordered_map<std::string, size_t> unwrap();
+        std::unordered_map<std::string, size_t> unwrap() const;
 
-        void dump(const std::string& filepath);
+        void dump(const std::string& filepath) const;
 
         void restore(const std::string& filepath);
 
-        void print();
+        void print() const;
 
         void clear();
 
     private:
         static const size_t NON_EXIST_ID = 0;
+        size_t id_counter{1};
         struct WordId
         {
             size_t id = NON_EXIST_ID;
         };
-
-        size_t id_counter{1};
-
         std::unordered_map<std::string, WordId> table;
+        std::unordered_map<size_t, std::string> revTable;
 
         void set_id(const std::string& word);
 

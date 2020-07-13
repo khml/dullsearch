@@ -24,22 +24,15 @@ namespace tinylex
 
     size_t WordIdTable::getId(const std::string& word)
     {
-        if (contain(word))
-            return table[word].id;
-
-        table[word].id = emitId();
+        set_id(word);
         return table[word].id;
     }
 
     std::string WordIdTable::getValue(const size_t& wordId)
     {
-        // TODO improve this
-        for (auto& word: table)
-        {
-            if (word.second.id == wordId)
-                return word.first;
-        }
-        throw std::runtime_error("NOT FOUND. wordId=" + std::to_string(wordId));
+        if (wordId >= id_counter)
+            throw std::runtime_error("NOT FOUND. wordId=" + std::to_string(wordId));
+        return revTable[wordId];
     }
 
     std::vector<size_t> WordIdTable::getIds(const std::vector<std::string>& words)
@@ -63,21 +56,21 @@ namespace tinylex
         return (table[word].id != NON_EXIST_ID);
     }
 
-    std::unordered_map<std::string, size_t> WordIdTable::unwrap()
+    std::unordered_map<std::string, size_t> WordIdTable::unwrap() const
     {
         std::unordered_map<std::string, size_t> container;
         container.reserve(table.size());
-        for (auto& item : table)
+        for (const auto& item : table)
             container[item.first] = item.second.id;
         return container;
     }
 
-    void WordIdTable::dump(const std::string& filepath)
+    void WordIdTable::dump(const std::string& filepath) const
     {
         std::vector<std::string> lines;
         lines.resize(table.size() + 1);
         lines[NON_EXIST_ID] = "-*-TINYLEXER-HEADER-LINE-*-";
-        for (auto& item : table)
+        for (const auto& item : table)
         {
             lines[item.second.id] = item.first;
         }
@@ -92,7 +85,7 @@ namespace tinylex
             set_id(line);
     }
 
-    void WordIdTable::print()
+    void WordIdTable::print() const
     {
         std::cout << "{ ";
         size_t size = table.size();
@@ -117,6 +110,7 @@ namespace tinylex
         if (contain(word))
             return;
         table[word] = WordId{emitId()};
+        revTable[table[word].id] = word;
     }
 
     inline size_t WordIdTable::emitId()
