@@ -252,6 +252,24 @@ TEST(TestWordIdTable, dump)
         EXPECT_EQ(lines[ids[idx] - 1], words[idx]);
 }
 
+TEST(TestWordIdTable, restore)
+{
+    const std::string filename = "TestWordIdTable_restore.tinylex";
+    const std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
+    tinylex::WordIdTable tableA;
+    const std::vector<size_t> ids = tableA.getIds(words);
+
+    std::ofstream file(filename);
+    ASSERT_FALSE(file.fail());
+    for(const std::string& word:words)
+        file << word << std::endl;
+    file.flush();
+
+    tinylex::WordIdTable tableB;
+    tableB.restore(filename);
+    EXPECT_THAT(tableB.getIds(words), testing::Pointwise(testing::Eq(), ids));
+}
+
 TEST(TestWordIdTable, clear)
 {
     tinylex::WordIdTable table;
