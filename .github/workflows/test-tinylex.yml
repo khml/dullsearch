@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Test with GoogleTest
 
 on:
   push:
