@@ -1,4 +1,4 @@
-name: Test with GoogleTest
+name: ubuntu18.04
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   test:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
