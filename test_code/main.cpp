@@ -154,23 +154,23 @@ TEST(TestReadCsv, readCsvFile)
     std::ofstream file(filepath);
     file << "0,1,2,3,4" << std::endl;
     file.flush();
-    EXPECT_EQ(tinylex::readCsvFile(filepath).size(), 1);
+    EXPECT_EQ(tinylex::readCsvFile(filepath).size(), (size_t) 1);
     EXPECT_THAT(tinylex::readCsvFile(filepath)[0], testing::ElementsAre("0", "1", "2", "3", "4"));
 
     file << "5, 6,  7" << std::endl;
     file.flush();
-    EXPECT_EQ(tinylex::readCsvFile(filepath).size(), 2);
+    EXPECT_EQ(tinylex::readCsvFile(filepath).size(), (size_t) 2);
     EXPECT_THAT(tinylex::readCsvFile(filepath)[1], testing::ElementsAre("5", "6", "7"));
 }
 
 TEST(TestWordIdTable, getId)
 {
     tinylex::WordIdTable table;
-    EXPECT_EQ(table.getId("Hello"), 1);
-    EXPECT_EQ(table.getId("Hello"), 1);
+    EXPECT_EQ(table.getId("Hello"), (size_t) 1);
+    EXPECT_EQ(table.getId("Hello"), (size_t) 1);
 
-    EXPECT_EQ(table.getId("World"), 2);
-    EXPECT_EQ(table.getId("Hello"), 1);
+    EXPECT_EQ(table.getId("World"), (size_t) 2);
+    EXPECT_EQ(table.getId("Hello"), (size_t) 1);
 }
 
 TEST(TestWordIdTable, getIds)
@@ -225,7 +225,7 @@ TEST(TestWordIdTable, unwrap)
     std::vector<std::size_t> ids = table.getIds(words);
     std::unordered_map<std::string, size_t> unwrapTable = table.unwrap();
 
-    EXPECT_EQ(unwrapTable.size(), 6);
+    EXPECT_EQ(unwrapTable.size(), (size_t) 6);
 
     for (size_t idx = 0; idx < words.size(); idx++)
     {
@@ -261,7 +261,7 @@ TEST(TestWordIdTable, restore)
 
     std::ofstream file(filename);
     ASSERT_FALSE(file.fail());
-    for(const std::string& word:words)
+    for (const std::string& word:words)
         file << word << std::endl;
     file.flush();
 
@@ -277,16 +277,16 @@ TEST(TestWordIdTable, clear)
     std::vector<std::size_t> ids = table.getIds(words);
     std::unordered_map<std::string, size_t> unwrapTable = table.unwrap();
 
-    EXPECT_EQ(unwrapTable.size(), 6);
+    EXPECT_EQ(unwrapTable.size(), (size_t) 6);
 
     table.clear();
     unwrapTable = table.unwrap();
-    EXPECT_EQ(unwrapTable.size(), 0);
+    EXPECT_EQ(unwrapTable.size(), (size_t) 0);
 
-    EXPECT_EQ(table.getId("hello"), 1);
-    EXPECT_EQ(table.getId("world"), 2);
+    EXPECT_EQ(table.getId("hello"), (size_t) 1);
+    EXPECT_EQ(table.getId("world"), (size_t) 2);
     table.clear();
-    EXPECT_EQ(table.getId("world"), 1);
+    EXPECT_EQ(table.getId("world"), (size_t) 1);
 }
 
 TEST(TestDocumentIdTable, lookupFiles)
