@@ -3,9 +3,9 @@
 //
 
 #include <dirent.h>
-#include <utility>
+#include <sys/stat.h>
 
-#include <tinylexer/filer/list_dir.hpp>
+#include <tinylexer/filer/directories.hpp>
 
 namespace tinylex
 {
@@ -13,7 +13,7 @@ namespace tinylex
     {
         std::vector<std::string> files;
         DIR* dirPtr = opendir(path.c_str());
-        if(dirPtr == nullptr)
+        if (dirPtr == nullptr)
         {
             ::closedir(dirPtr);
             return files;
@@ -28,5 +28,10 @@ namespace tinylex
         }
         closedir(dirPtr);
         return files;
+    }
+
+    bool createDir(const std::string& path)
+    {
+        return mkdir(path.c_str(), S_IRWXU) >= 0;
     }
 }
