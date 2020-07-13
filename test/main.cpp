@@ -242,6 +242,7 @@ TEST(TestWordIdTable, dump)
     table.dump(filename);
 
     std::ifstream file(filename);
+    ASSERT_FALSE(file.fail());
     std::string line;
     std::vector<std::string> lines;
     while (getline(file, line))
