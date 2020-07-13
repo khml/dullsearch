@@ -233,6 +233,24 @@ TEST(TestWordIdTable, unwrap)
     }
 }
 
+TEST(TestWordIdTable, dump)
+{
+    const std::string filename = "TestWordIdTable_dump.tinylex";
+    tinylex::WordIdTable table;
+    const std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
+    const std::vector<size_t> ids = table.getIds(words);
+    table.dump(filename);
+
+    std::ifstream file(filename);
+    std::string line;
+    std::vector<std::string> lines;
+    while (getline(file, line))
+        lines.emplace_back(line);
+
+    for (size_t idx = 0; idx < ids.size(); idx++)
+        EXPECT_EQ(lines[ids[idx] - 1], words[idx]);
+}
+
 TEST(TestWordIdTable, clear)
 {
     tinylex::WordIdTable table;

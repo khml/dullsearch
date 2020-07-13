@@ -68,11 +68,11 @@ namespace tinylex
     void WordIdTable::dump(const std::string& filepath) const
     {
         std::vector<std::string> lines;
-        lines.resize(table.size() + 1);
-        lines[NON_EXIST_ID] = "-*-TINYLEXER-HEADER-LINE-*-";
+        lines.resize(table.size());
+        constexpr size_t adjuster = NON_EXIST_ID + 1;
         for (const auto& item : table)
         {
-            lines[item.second.id] = item.first;
+            lines[item.second.id - adjuster] = item.first;
         }
         writeLinesToFile(filepath, lines);
     }
