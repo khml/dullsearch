@@ -14,34 +14,25 @@ namespace tinylex
     WordIdTable::WordIdTable()
     = default;
 
+    WordIdTable::WordIdTable(const std::string& filepath)
+    {
+        restore(filepath);
+    }
+
     WordIdTable::~WordIdTable()
     = default;
 
-    WordIdTable::WordIdTable(const std::vector<std::string>& words)
-    {
-        hashmap.reserve(words.size());
-        for (const auto& word : words)
-            set_id(word);
-    }
-
     size_t WordIdTable::getId(const std::string& word)
     {
-        if (contain(word))
-            return hashmap[word].id;
-
-        hashmap[word].id = id_counter++;
-        return hashmap[word].id;
+        set_id(word);
+        return table[word].id;
     }
 
     std::string WordIdTable::getValue(const size_t& wordId)
     {
-        // TODO improve this
-        for(auto& word: hashmap)
-        {
-            if (word.second.id == wordId)
-                return word.first;
-        }
-        throw std::runtime_error("NOT FOUND. wordId=" + std::to_string(wordId));
+        if (wordId >= id_counter)
+            throw std::runtime_error("NOT FOUND. wordId=" + std::to_string(wordId));
+        return revTable[wordId];
     }
 
     std::vector<size_t> WordIdTable::getIds(const std::vector<std::string>& words)
@@ -62,26 +53,26 @@ namespace tinylex
 
     bool WordIdTable::contain(const std::string& word)
     {
-        return (hashmap[word].id != NON_EXIST_ID);
+        return (table[word].id != NON_EXIST_ID);
     }
 
-    std::unordered_map<std::string, size_t> WordIdTable::unwrap()
+    std::unordered_map<std::string, size_t> WordIdTable::unwrap() const
     {
         std::unordered_map<std::string, size_t> container;
-        container.reserve(hashmap.size());
-        for (auto& item : hashmap)
+        container.reserve(table.size());
+        for (const auto& item : table)
             container[item.first] = item.second.id;
         return container;
     }
 
-    void WordIdTable::dump(const std::string& filepath)
+    void WordIdTable::dump(const std::string& filepath) const
     {
         std::vector<std::string> lines;
-        lines.resize(hashmap.size() + 1);
-        lines[NON_EXIST_ID] = "-*-TINYLEXER-HEADER-LINE-*-";
-        for (auto& item : hashmap)
+        lines.resize(table.size());
+        constexpr size_t adjuster = NON_EXIST_ID + 1;
+        for (const auto& item : table)
         {
-            lines[item.second.id] = item.first;
+            lines[item.second.id - adjuster] = item.first;
         }
         writeLinesToFile(filepath, lines);
     }
@@ -94,12 +85,12 @@ namespace tinylex
             set_id(line);
     }
 
-    void WordIdTable::print()
+    void WordIdTable::print() const
     {
         std::cout << "{ ";
-        size_t size = hashmap.size();
+        size_t size = table.size();
         size_t i = 0;
-        for (auto& item: hashmap)
+        for (auto& item: table)
         {
             std::cout << '"' << item.first << '"' << ": " << item.second.id;
             if (++i < size)
@@ -111,13 +102,19 @@ namespace tinylex
     void WordIdTable::clear()
     {
         id_counter = NON_EXIST_ID + 1;
-        hashmap.clear();
+        table.clear();
     }
 
     void WordIdTable::set_id(const std::string& word)
     {
         if (contain(word))
             return;
-        hashmap[word] = WordId{id_counter++};
+        table[word] = WordId{emitId()};
+        revTable[table[word].id] = word;
+    }
+
+    inline size_t WordIdTable::emitId()
+    {
+        return id_counter++;
     }
 }

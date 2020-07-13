@@ -1,21 +1,23 @@
+// example.cpp
+
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include <tinylexer.hpp>
-int main()
+
+int main(int argc, char* argv[])
 {
-    std::vector<std::string> words = tinylex::lex("Hello, World! This is a Hello World program");
+    if (argc < 2)
+    {
+        std::cout << "need an argument: dir path" << std::endl;
+        return 0;
+    }
+    const std::string pathname = argv[1];
 
-    tinylex::WordIdTable table; // create word id table
-    std::vector<std::size_t> ids = table.getIdsWithUniqSort(words); // get ids from words
-    tinylex::printVec(ids); // show ids
-    table.print(); // show table
-
-    const std::string filepath = "example.txt";
-    table.dump(filepath);
-    table.clear();
-    table.print();
-    table.restore(filepath);
-    table.print();
+    const std::vector<std::string> filenames = tinylex::listDir(pathname);
+    for(const std::string& filename:filenames)
+        std::cout << filename << std::endl;
 
     return 0;
 }

@@ -7,5 +7,5 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "-Wall")
 
 add_subdirectory(tinylexer)
-add_subdirectory(test)
+add_subdirectory(test_code)
 add_subdirectory(example)
