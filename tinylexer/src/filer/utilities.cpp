@@ -27,6 +27,11 @@ namespace tinylex
         return (getMode(path) == S_IFREG);
     }
 
+    bool createDir(const std::string& path)
+    {
+        return mkdir(path.c_str(), S_IRWXU) >= 0;
+    }
+
     std::vector<std::string> splitByComma(const std::string& line)
     {
         std::vector<std::string> result;

@@ -14,6 +14,8 @@ namespace tinylex
 
     bool isReg(const std::string& path);
 
+    bool createDir(const std::string& path);
+
     std::vector<std::string> splitByComma(const std::string& line);
 }
 

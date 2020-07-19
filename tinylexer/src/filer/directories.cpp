@@ -3,7 +3,6 @@
 //
 
 #include <dirent.h>
-#include <sys/stat.h>
 
 #include <tinylexer/filer/directories.hpp>
 #include <tinylexer/filer/utilities.hpp>
@@ -33,10 +32,5 @@ namespace tinylex
         }
         closedir(dirPtr);
         return files;
-    }
-
-    bool createDir(const std::string& path)
-    {
-        return mkdir(path.c_str(), S_IRWXU) >= 0;
     }
 }
