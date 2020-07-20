@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     }
     const std::string pathname = argv[1];
 
-    const std::vector<std::string> filenames = tinylex::listDir(pathname);
+    const std::vector<std::string> filenames = tinylex::listDirRecursive(pathname);
     for(const std::string& filename:filenames)
         std::cout << filename << std::endl;
 
