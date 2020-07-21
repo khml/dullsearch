@@ -6,6 +6,6 @@ project(${PROJECT_NAME})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-Wall")
 
-add_subdirectory(tinylexer)
+add_subdirectory(libtinylexer)
 add_subdirectory(test_code)
 add_subdirectory(example)
