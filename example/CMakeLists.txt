@@ -6,4 +6,4 @@ project(${PROJECT_NAME})
 # example app
 set(EXAMPLE_APP example)
 add_executable(${EXAMPLE_APP} example.cpp)
-target_link_libraries(${EXAMPLE_APP} tinylex)
+target_link_libraries(${EXAMPLE_APP} lexengine)
