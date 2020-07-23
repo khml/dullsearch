@@ -17,6 +17,12 @@ namespace tinylex
         return (st.st_mode & S_IFMT);
     }
 
+    bool isExist(const std::string& path)
+    {
+        struct ::stat st{};
+        return stat(path.c_str(), &st) == 0;
+    }
+
     bool isDir(const std::string& path)
     {
         return (getMode(path) == S_IFDIR);

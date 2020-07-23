@@ -10,6 +10,8 @@
 
 namespace tinylex
 {
+    bool isExist(const std::string& path);
+
     bool isDir(const std::string& path);
 
     bool isReg(const std::string& path);
