@@ -2,7 +2,7 @@ name: ubuntu18.04
 
 on:
   push:
-    branches: [ stable ]
+    branches: [ stable action ]
   pull_request:
     branches: [ stable ]
 
@@ -13,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: check versions
+      run: |
+        echo `gcc --version`
     - name: fetch google test
       run: |
         wget https://github.com/google/googletest/archive/release-1.10.0.zip
