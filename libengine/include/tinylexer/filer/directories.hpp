@@ -12,7 +12,7 @@ namespace tinylex
 {
     std::vector<std::string> listDir(const std::string& path);
 
-    bool createDir(const std::string& path);
+    std::vector<std::string> listDirRecursive(const std::string& path);
 }
 
 #endif //TINYLEXER_DIRECTORIES_HPP

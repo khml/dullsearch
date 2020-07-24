@@ -10,9 +10,13 @@
 
 namespace tinylex
 {
+    bool isExist(const std::string& path);
+
     bool isDir(const std::string& path);
 
     bool isReg(const std::string& path);
+
+    bool createDir(const std::string& path);
 
     std::vector<std::string> splitByComma(const std::string& line);
 }

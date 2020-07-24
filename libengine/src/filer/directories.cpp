@@ -3,10 +3,12 @@
 //
 
 #include <dirent.h>
-#include <sys/stat.h>
+#include <filesystem>
 
 #include <tinylexer/filer/directories.hpp>
 #include <tinylexer/filer/utilities.hpp>
+
+namespace fs = std::filesystem;
 
 namespace tinylex
 {
@@ -35,8 +37,16 @@ namespace tinylex
         return files;
     }
 
-    bool createDir(const std::string& path)
+    std::vector<std::string> listDirRecursive(const std::string& path)
     {
-        return mkdir(path.c_str(), S_IRWXU) >= 0;
+        std::vector<std::string> pathList;
+        fs::file_status status = fs::status(path);
+        if (!fs::exists(status) || status.type() != fs::file_type::directory)
+            return pathList;
+
+        for(const fs::directory_entry& entry: fs::recursive_directory_iterator(path))
+            pathList.emplace_back(entry.path().string());
+
+        return pathList;
     }
 }
