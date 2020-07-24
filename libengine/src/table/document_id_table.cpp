@@ -2,14 +2,28 @@
 // Created by KHML on 2020/07/11.
 //
 
+#include <utility>
+#include <stdexcept>
+
 #include <tinylexer/table/document_id_table.hpp>
 #include <tinylexer/filer/file.hpp>
+#include <tinylexer/filer/utilities.hpp>
 #include <tinylexer/lexer/lexer.hpp>
 
 namespace tinylex
 {
     DocumentIdTable::DocumentIdTable()
     = default;
+
+    DocumentIdTable::DocumentIdTable(std::string _docDumpPath, std::string _wordDumpPath) :
+        docDumpPath(std::move(_docDumpPath)), wordDumpPath(std::move(_wordDumpPath))
+    {
+        if (isExist(wordDumpPath))
+            wordTable.restore(wordDumpPath);
+
+        if (isExist(docDumpPath))
+            docTable.restore(docDumpPath);
+    }
 
     DocumentIdTable::~DocumentIdTable()
     = default;
@@ -37,5 +51,14 @@ namespace tinylex
         for (const size_t& docId:docIds)
             files.emplace_back(docTable.getValue(docId));
         return files;
+    }
+
+    void DocumentIdTable::dump()
+    {
+        if (wordDumpPath.empty() || docDumpPath.empty())
+            throw std::runtime_error("file path is NOT filled");
+
+        wordTable.dump(wordDumpPath);
+        docTable.dump(docDumpPath);
     }
 }
