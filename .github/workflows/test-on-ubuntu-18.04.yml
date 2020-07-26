@@ -2,7 +2,7 @@ name: ubuntu18.04
 
 on:
   push:
-    branches: [ stable action ]
+    branches: [ stable ]
   pull_request:
     branches: [ stable ]
 
@@ -13,9 +13,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: check versions
+    - name: update gcc
       run: |
-        echo `gcc --version`
+        sudo apt-get update
+        sudo apt-get install -y gcc-8 g++-8
+    - name: check GCC versions
+      run: |
+        echo `gcc-8 --version`
+        echo `g++-8 --version`
+        echo `which gcc-8`
+        echo `which g++-8`
     - name: fetch google test
       run: |
         wget https://github.com/google/googletest/archive/release-1.10.0.zip
@@ -23,14 +30,18 @@ jobs:
       run: mkdir lib/
     - name: install google test
       run: |
+        export CC=`which gcc-8`
+        export CXX=`which g++-8`
         unzip release-1.10.0.zip
         mkdir googletest-release-1.10.0/build && cd googletest-release-1.10.0/build
-        cmake -DCMAKE_INSTALL_PREFIX=../../lib/ ../ && make -j4
+        cmake -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DCMAKE_INSTALL_PREFIX=../../lib/ ../ && make -j4
         make install
     - name: build tinyles
       run: |
+        export CC=`which gcc-8`
+        export CXX=`which g++-8`
         mkdir build && cd build
-        cmake -DCMAKE_PREFIX_PATH=../lib/ ../
+        cmake -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8 -DCMAKE_PREFIX_PATH=../lib/ ../
         make -j4
     - name: test tinylex
       run: |
