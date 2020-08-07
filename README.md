@@ -4,6 +4,18 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/khml/tinylexer/badge)](https://www.codefactor.io/repository/github/khml/tinylexer)[![BCH compliance](https://bettercodehub.com/edge/badge/khml/tinylexer?branch=stable)](https://bettercodehub.com/)
 
+# dependencies
+- GCC 8.0 and more
+- [GoogleTest](https://github.com/google/googletest)
+
+# build
+
+```
+$ git clone https://github.com/khml/tinylexer.git
+$ cd tinylexer
+$ mkdir build && cd build
+$ make -j4
+```
 
 # example code
 
