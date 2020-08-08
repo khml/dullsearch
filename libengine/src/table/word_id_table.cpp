@@ -64,6 +64,16 @@ namespace tinylex
         return container;
     }
 
+    std::vector<std::string> WordIdTable::values() const
+    {
+        std::vector<std::string> container;
+        container.resize(table.size());
+        for (const auto& item : table)
+            container[item.second.id - (NON_EXIST_ID + 1)] = item.first;
+
+        return container;
+    }
+
     void WordIdTable::dump(const std::string& filepath) const
     {
         std::vector<std::string> lines;

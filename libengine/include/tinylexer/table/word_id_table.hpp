@@ -34,6 +34,8 @@ namespace tinylex
 
         std::unordered_map<std::string, size_t> unwrap() const;
 
+        std::vector<std::string> values() const;
+
         void dump(const std::string& filepath) const;
 
         void restore(const std::string& filepath);

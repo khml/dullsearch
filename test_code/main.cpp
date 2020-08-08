@@ -233,6 +233,17 @@ TEST(TestWordIdTable, unwrap)
     }
 }
 
+TEST(TestWordIdTable, values)
+{
+    tinylex::WordIdTable table;
+    std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
+    (void)table.getIds(words);
+    std::vector<std::string> values = table.values();
+
+    EXPECT_EQ(values.size(), (size_t) 6);
+    EXPECT_THAT(values, testing::Pointwise(testing::Eq(), { "Hello", "World", ".", "This", "Is", "Code" }));
+}
+
 TEST(TestWordIdTable, dump)
 {
     const std::string filename = "TestWordIdTable_dump.tinylex";
