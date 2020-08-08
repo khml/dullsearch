@@ -23,6 +23,9 @@ namespace tinylex
 
     size_t WordIdTable::getId(const std::string& word)
     {
+        if (word.empty())
+            return NON_EXIST_ID;
+
         set_id(word);
         return table[word].id;
     }
@@ -122,8 +125,6 @@ namespace tinylex
     void WordIdTable::set_id(const std::string& word)
     {
         if (contain(word))
-            return;
-        if (word.empty())
             return;
         table[word] = WordId{emitId()};
         revTable[table[word].id] = word;
