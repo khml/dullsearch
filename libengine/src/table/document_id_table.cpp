@@ -2,28 +2,17 @@
 // Created by KHML on 2020/07/11.
 //
 
-#include <utility>
 #include <stdexcept>
+#include <sstream>
 
 #include <tinylexer/table/document_id_table.hpp>
 #include <tinylexer/filer/file.hpp>
-#include <tinylexer/filer/utilities.hpp>
 #include <tinylexer/lexer/lexer.hpp>
 
 namespace tinylex
 {
     DocumentIdTable::DocumentIdTable()
     = default;
-
-    DocumentIdTable::DocumentIdTable(std::string _docDumpPath, std::string _wordDumpPath) :
-        docDumpPath(std::move(_docDumpPath)), wordDumpPath(std::move(_wordDumpPath))
-    {
-        if (isExist(wordDumpPath))
-            wordTable.restore(wordDumpPath);
-
-        if (isExist(docDumpPath))
-            docTable.restore(docDumpPath);
-    }
 
     DocumentIdTable::~DocumentIdTable()
     = default;
@@ -53,12 +42,33 @@ namespace tinylex
         return files;
     }
 
-    void DocumentIdTable::dump()
+    void DocumentIdTable::dump(const std::string& filepath) const
     {
-        if (wordDumpPath.empty() || docDumpPath.empty())
-            throw std::runtime_error("file path is NOT filled");
+        std::vector<std::string> lines;
+        lines.reserve(wordTable.size() + docTable.size() + relationTable.size());
 
-        wordTable.dump(wordDumpPath);
-        docTable.dump(docDumpPath);
+        for (const std::string& word : wordTable.values())
+            lines.emplace_back(word);
+        lines.emplace_back("");
+
+        for (const std::string& doc : docTable.values())
+            lines.emplace_back(doc);
+        lines.emplace_back("");
+
+        std::ostringstream oss;
+        for (size_t idx = 1; idx < relationTable.size(); idx++)
+        {
+            oss.str("");
+            const std::unordered_set<size_t>& docIds = relationTable.at(idx);
+            for (auto iter = docIds.begin(); iter != docIds.end();)
+            {
+                oss << *iter;
+                if (++iter != docIds.end())
+                    oss << ",";
+            }
+            lines.emplace_back(oss.str());
+        }
+
+        writeLinesToFile(filepath, lines);
     }
 }

@@ -35,21 +35,20 @@ int main(int argc, char* argv[])
     int pos = 1;
     CommandOption option = parseOption(argv, pos);
 
-    const std::string DOC_FILENAME = ".doc.tinylex";
-    const std::string WORD_FILENAME = ".word.tinylex";
+    const std::string TINYLEX_FILENAME = ".tinylex.txt";
 
-    tinylex::DocumentIdTable docTable(DOC_FILENAME, WORD_FILENAME);
+    tinylex::DocumentIdTable docTable;
 
     if (option == Add && pos < argc)
     {
         std::string filepath = std::string(argv[pos]);
         docTable.setIds(filepath);
-        docTable.dump();
+        docTable.dump(TINYLEX_FILENAME);
     }
     else if (option == Search)
     {
         const std::string word = std::string(argv[pos]);
-        for(const auto& filepath : docTable.lookupFiles(word))
+        for (const auto& filepath : docTable.lookupFiles(word))
         {
             std::cout << filepath << std::endl;
         }
