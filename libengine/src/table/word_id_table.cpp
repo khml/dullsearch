@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <stdexcept>
-#include <utility>
 
 #include <tinylexer/table/word_id_table.hpp>
 #include <tinylexer/filer/file.hpp>
@@ -24,6 +23,9 @@ namespace tinylex
 
     size_t WordIdTable::getId(const std::string& word)
     {
+        if (word.empty())
+            return NON_EXIST_ID;
+
         set_id(word);
         return table[word].id;
     }
@@ -63,6 +65,21 @@ namespace tinylex
         for (const auto& item : table)
             container[item.first] = item.second.id;
         return container;
+    }
+
+    std::vector<std::string> WordIdTable::values() const
+    {
+        std::vector<std::string> container;
+        container.resize(table.size());
+        for (const auto& item : table)
+            container[item.second.id - (NON_EXIST_ID + 1)] = item.first;
+
+        return container;
+    }
+
+    size_t WordIdTable::size() const
+    {
+        return table.size();
     }
 
     void WordIdTable::dump(const std::string& filepath) const
