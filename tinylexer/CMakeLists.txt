@@ -5,4 +5,4 @@ project(${PROJECT_NAME})
 
 set(TINYLEXER_APP tinylex)
 add_executable(${TINYLEXER_APP} tinylex.cpp)
-target_link_libraries(${TINYLEXER_APP} lexengine)
+target_link_libraries(${TINYLEXER_APP} PRIVATE lexengine)

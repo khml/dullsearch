@@ -18,19 +18,15 @@ namespace tinylex
     public:
         DocumentIdTable();
 
-        DocumentIdTable(std::string docDumpPath, std::string wordDumpPath);
-
         virtual ~DocumentIdTable();
 
         void setIds(const std::string& filepath);
 
         std::vector<std::string> lookupFiles(const std::string& word);
 
-        void dump();
+        void dump(const std::string& filepath) const;
 
     private:
-        const std::string docDumpPath;
-        const std::string wordDumpPath;
         WordIdTable wordTable;
         WordIdTable docTable;
         std::unordered_map<size_t, std::unordered_set<size_t>> relationTable; // wordId -> [docId, docId, ...]
