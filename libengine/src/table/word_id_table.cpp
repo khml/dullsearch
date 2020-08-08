@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <stdexcept>
-#include <utility>
 
 #include <tinylexer/table/word_id_table.hpp>
 #include <tinylexer/filer/file.hpp>
@@ -108,6 +107,8 @@ namespace tinylex
     void WordIdTable::set_id(const std::string& word)
     {
         if (contain(word))
+            return;
+        if (word.empty())
             return;
         table[word] = WordId{emitId()};
         revTable[table[word].id] = word;
