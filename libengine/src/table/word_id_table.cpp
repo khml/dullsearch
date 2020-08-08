@@ -74,6 +74,11 @@ namespace tinylex
         return container;
     }
 
+    size_t WordIdTable::size() const
+    {
+        return table.size();
+    }
+
     void WordIdTable::dump(const std::string& filepath) const
     {
         std::vector<std::string> lines;
