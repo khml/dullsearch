@@ -122,6 +122,12 @@ TEST(TestUtilities, splitByComma)
 
     EXPECT_THAT(tinylex::splitByComma("1, \"2\", ',3', a'4', 5"),
         testing::ElementsAre("1", "2", ",3", "a'4'", "5"));
+
+    EXPECT_THAT(tinylex::splitByComma("1"),
+        testing::ElementsAre("1"));
+
+    EXPECT_THAT(tinylex::splitByComma("1,"),
+        testing::ElementsAre("1"));
 }
 
 TEST(TestUtilities, uniqSort)
