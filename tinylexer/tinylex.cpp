@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
     const std::string TINYLEX_FILENAME = ".tinylex.txt";
 
     tinylex::DocumentIdTable docTable;
+    docTable.restore(TINYLEX_FILENAME);
 
     if (option == Add && pos < argc)
     {

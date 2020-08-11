@@ -26,6 +26,10 @@ namespace tinylex
 
         void dump(const std::string& filepath) const;
 
+        void restore(const std::string& filepath);
+
+        void clear();
+
     private:
         WordIdTable wordTable;
         WordIdTable docTable;

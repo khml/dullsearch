@@ -5,9 +5,10 @@
 #include <stdexcept>
 #include <sstream>
 
-#include <tinylexer/table/document_id_table.hpp>
 #include <tinylexer/filer/file.hpp>
 #include <tinylexer/lexer/lexer.hpp>
+#include <tinylexer/filer/utilities.hpp>
+#include <tinylexer/table/document_id_table.hpp>
 
 namespace tinylex
 {
@@ -70,5 +71,56 @@ namespace tinylex
         }
 
         writeLinesToFile(filepath, lines);
+    }
+
+    void DocumentIdTable::restore(const std::string& filepath)
+    {
+        if (!isExist(filepath))
+            return;
+
+        clear();
+        std::vector<std::string> lines = readFile(filepath);
+
+        size_t idx{0};
+
+        // read words
+        for (; idx < lines.size(); idx++)
+        {
+            if (lines[idx].empty())
+                break;
+            wordTable.getId(lines[idx]);
+        }
+        idx++;
+
+        // read doc names
+        for (; idx < lines.size(); idx++)
+        {
+            if (lines[idx].empty())
+                break;
+            docTable.getId(lines[idx]);
+        }
+        idx++;
+
+        // read relations
+        const size_t relationId{idx};
+        size_t id;
+        for (; idx < lines.size(); idx++)
+        {
+            if (lines[idx].empty())
+                continue;
+            std::vector<std::string> ids = splitByComma(lines[idx]);
+            for (const std::string& idStr : ids)
+            {
+                std::stringstream(idStr) >> id;
+                relationTable[idx - relationId + 1].emplace(id);
+            }
+        }
+    }
+
+    void DocumentIdTable::clear()
+    {
+        wordTable.clear();
+        docTable.clear();
+        relationTable.clear();
     }
 }
