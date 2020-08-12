@@ -6,7 +6,7 @@
 
 # dependencies
 - GCC 8.0 and more
-- [GoogleTest](https://github.com/google/googletest)
+- [GoogleTest](https://github.com/google/googletest) (only when run test)
 
 # build
 
