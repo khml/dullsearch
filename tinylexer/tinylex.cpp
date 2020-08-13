@@ -7,21 +7,45 @@
 
 #include <tinylexer.hpp>
 
+static const char* VERSION = "alpha-0.0.1";
+static const char* APP_NAME = "TinyLex";
+
 enum CommandOption
 {
     Add = 0,
-    Search
+    Help,
+    Search,
+    Version,
+    Other
 };
 
 CommandOption parseOption(char* argv[], int& pos)
 {
     const std::string option(argv[pos]);
+
     if (option == "-a")
     {
         pos++;
         return Add;
     }
-    return Search;
+
+    if (option == "-h" || option == "--help")
+    {
+        return Help;
+    }
+
+    if (option == "-v" || option == "--version")
+    {
+        return Version;
+    }
+
+    if (option == "-s")
+    {
+        pos++;
+        return Search;
+    }
+
+    return Other;
 }
 
 int main(int argc, char* argv[])
@@ -46,7 +70,20 @@ int main(int argc, char* argv[])
         docTable.setIds(filepath);
         docTable.dump(TINYLEX_FILENAME);
     }
-    else if (option == Search)
+    else if (option == Version)
+    {
+        std::cout << APP_NAME << " version: " << VERSION << std::endl;
+    }
+    else if (option == Help)
+    {
+        std::cout << "Usage: " << APP_NAME << "[options]" << "{ word | filepath }" << std::endl
+                  << "Options:" << std::endl
+                  << "-a <filepath>  Indexing the specified file" << std::endl
+                  << "-s <word>      Search file" << std::endl
+                  << "-v, --version  Display version info" << std::endl
+                  << "-h, --help     Display help" << std::endl;
+    }
+    else if (option == Search || option == Other)
     {
         const std::string word = std::string(argv[pos]);
         for (const auto& filepath : docTable.lookupFiles(word))
