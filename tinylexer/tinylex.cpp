@@ -56,39 +56,44 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    int pos = 1;
-    CommandOption option = parseOption(argv, pos);
-
     const std::string TINYLEX_FILENAME = ".tinylex.txt";
 
     tinylex::DocumentIdTable docTable;
     docTable.restore(TINYLEX_FILENAME);
 
-    if (option == Add && pos < argc)
+    for (int pos = 1; pos < argc; pos++)
     {
-        std::string filepath = std::string(argv[pos]);
-        docTable.setIds(filepath);
-        docTable.dump(TINYLEX_FILENAME);
-    }
-    else if (option == Version)
-    {
-        std::cout << APP_NAME << " version: " << VERSION << std::endl;
-    }
-    else if (option == Help)
-    {
-        std::cout << "Usage: " << APP_NAME << "[options]" << "{ word | filepath }" << std::endl
-                  << "Options:" << std::endl
-                  << "-a <filepath>  Indexing the specified file" << std::endl
-                  << "-s <word>      Search file" << std::endl
-                  << "-v, --version  Display version info" << std::endl
-                  << "-h, --help     Display help" << std::endl;
-    }
-    else if (option == Search || option == Other)
-    {
-        const std::string word = std::string(argv[pos]);
-        for (const auto& filepath : docTable.lookupFiles(word))
+        CommandOption option = parseOption(argv, pos);
+        if (option == Add && pos < argc)
         {
-            std::cout << filepath << std::endl;
+            std::string filepath = std::string(argv[pos]);
+            docTable.setIds(filepath);
+            docTable.dump(TINYLEX_FILENAME);
+        }
+        else if (option == Search || option == Other)
+        {
+            const std::string word = std::string(argv[pos]);
+            std::cout << "word: " << word << std::endl;
+            for (const auto& filepath : docTable.lookupFiles(word))
+            {
+                std::cout << filepath << std::endl;
+            }
+            std::cout << std::endl;
+        }
+        else if (option == Version)
+        {
+            std::cout << APP_NAME << " version: " << VERSION << std::endl;
+            break;
+        }
+        else if (option == Help)
+        {
+            std::cout << "Usage: " << APP_NAME << "[options]" << "{ word | filepath }" << std::endl
+                      << "Options:" << std::endl
+                      << "-a <filepath>  Indexing the specified file" << std::endl
+                      << "-s <word>      Search file" << std::endl
+                      << "-v, --version  Display version info" << std::endl
+                      << "-h, --help     Display help" << std::endl;
+            break;
         }
     }
 
