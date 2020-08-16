@@ -9,6 +9,7 @@
 
 static const char* VERSION = "alpha-0.0.1";
 static const char* APP_NAME = "TinyLex";
+static const char* TINYLEX_FILENAME = ".tinylex.txt";
 
 enum CommandOption
 {
@@ -48,6 +49,37 @@ CommandOption parseOption(char* argv[], int& pos)
     return Other;
 }
 
+void showVersion()
+{
+    std::cout << APP_NAME << " version: " << VERSION << std::endl;
+}
+
+void showHelp()
+{
+    std::cout << "Usage: " << APP_NAME << "[options]" << "{ word | filepath }" << std::endl
+              << "Options:" << std::endl
+              << "-a <filepath>  Indexing the specified file" << std::endl
+              << "-s <word>      Search file" << std::endl
+              << "-v, --version  Display version info" << std::endl
+              << "-h, --help     Display help" << std::endl;
+}
+
+void indexing(const std::string& filepath, tinylex::DocumentIdTable& table)
+{
+    table.setIds(filepath);
+    table.dump(TINYLEX_FILENAME);
+}
+
+void search(const std::string& word, tinylex::DocumentIdTable& table)
+{
+    std::cout << "word: " << word << std::endl;
+    for (const auto& filepath : table.lookupFiles(word))
+    {
+        std::cout << filepath << std::endl;
+    }
+    std::cout << std::endl;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc < 2)
@@ -55,8 +87,6 @@ int main(int argc, char* argv[])
         std::cerr << "Error: specify filename" << std::endl;
         return -1;
     }
-
-    const std::string TINYLEX_FILENAME = ".tinylex.txt";
 
     tinylex::DocumentIdTable docTable;
     docTable.restore(TINYLEX_FILENAME);
@@ -66,33 +96,20 @@ int main(int argc, char* argv[])
         CommandOption option = parseOption(argv, pos);
         if (option == Add && pos < argc)
         {
-            std::string filepath = std::string(argv[pos]);
-            docTable.setIds(filepath);
-            docTable.dump(TINYLEX_FILENAME);
+            indexing(argv[pos], docTable);
         }
         else if (option == Search || option == Other)
         {
-            const std::string word = std::string(argv[pos]);
-            std::cout << "word: " << word << std::endl;
-            for (const auto& filepath : docTable.lookupFiles(word))
-            {
-                std::cout << filepath << std::endl;
-            }
-            std::cout << std::endl;
+            search(argv[pos], docTable);
         }
         else if (option == Version)
         {
-            std::cout << APP_NAME << " version: " << VERSION << std::endl;
+            showVersion();
             break;
         }
         else if (option == Help)
         {
-            std::cout << "Usage: " << APP_NAME << "[options]" << "{ word | filepath }" << std::endl
-                      << "Options:" << std::endl
-                      << "-a <filepath>  Indexing the specified file" << std::endl
-                      << "-s <word>      Search file" << std::endl
-                      << "-v, --version  Display version info" << std::endl
-                      << "-h, --help     Display help" << std::endl;
+            showHelp();
             break;
         }
     }
