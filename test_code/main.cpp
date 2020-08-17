@@ -22,7 +22,7 @@ TEST(TestLexer, lex)
     EXPECT_THAT(tinylex::lex(
         "class HelloWorld { public static void main(String[] args) { System.out.println(\"Hello, world.\"); } }"),
         testing::ElementsAre("class", "HelloWorld", "{", "public", "static", "void", "main", "(", "String", "[", "]",
-            "args", ")", "{", "System", ".", "out", ".", "println", "(", "Hello, world.", ")", ";", "}", "}"));
+            "args", ")", "{", "System", ".", "out", ".", "println", "(", "Hello", "world", ".", ")", ";", "}", "}"));
 }
 
 TEST(TestSymbol, toSymbol)
@@ -243,18 +243,18 @@ TEST(TestWordIdTable, values)
 {
     tinylex::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
-    (void)table.getIds(words);
+    (void) table.getIds(words);
     std::vector<std::string> values = table.values();
 
     EXPECT_EQ(values.size(), (size_t) 6);
-    EXPECT_THAT(values, testing::Pointwise(testing::Eq(), { "Hello", "World", ".", "This", "Is", "Code" }));
+    EXPECT_THAT(values, testing::Pointwise(testing::Eq(), {"Hello", "World", ".", "This", "Is", "Code"}));
 }
 
 TEST(TestWordIdTable, size)
 {
     tinylex::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
-    (void)table.getIds(words);
+    (void) table.getIds(words);
 
     EXPECT_EQ(table.size(), (size_t) 6);
 }
@@ -330,7 +330,7 @@ TEST(TestDocumentIdTable, lookupFiles)
     fileB.flush();
     fileC.flush();
 
-    tinylex::DocumentIdTable table;
+    tinylex::DocumentTable table;
     table.setIds(filepathA);
     table.setIds(filepathB);
 

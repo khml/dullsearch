@@ -32,6 +32,9 @@ namespace tinylex
                         readIdentifier(indicator, line, words);
                     break;
                 case symbol::WHITESPACE:
+                case symbol::APOSTROPHE:
+                case symbol::QUOTATION:
+                case symbol::COMMA:
                     break;
                 case symbol::ADD:
                 case symbol::SUB:
@@ -43,10 +46,6 @@ namespace tinylex
                 case symbol::AMPERSAND:
                 case symbol::PIPE:
                     readMultiCharOperator(indicator, line, words, ch, 2);
-                    break;
-                case symbol::APOSTROPHE:
-                case symbol::QUOTATION:
-                    readString(indicator, line, words, ch);
                     break;
                 default:
                     words.emplace_back(ch);

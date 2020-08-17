@@ -64,13 +64,13 @@ void showHelp()
               << "-h, --help     Display help" << std::endl;
 }
 
-void indexing(const std::string& filepath, tinylex::DocumentIdTable& table)
+void indexing(const std::string& filepath, tinylex::DocumentTable& table)
 {
     table.setIds(filepath);
     table.dump(TINYLEX_FILENAME);
 }
 
-void search(const std::string& word, tinylex::DocumentIdTable& table)
+void search(const std::string& word, tinylex::DocumentTable& table)
 {
     std::cout << "word: " << word << std::endl;
     for (const auto& filepath : table.lookupFiles(word))
@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    tinylex::DocumentIdTable docTable;
+    tinylex::DocumentTable docTable;
     docTable.restore(TINYLEX_FILENAME);
 
     for (int pos = 1; pos < argc; pos++)
