@@ -2,8 +2,8 @@
 // Created by KHML on 2020/07/11.
 //
 
-#ifndef TINYLEXER_DOCUMENT_ID_TABLE_HPP
-#define TINYLEXER_DOCUMENT_ID_TABLE_HPP
+#ifndef TINYLEXER_DOCUMENT_TABLE_HPP
+#define TINYLEXER_DOCUMENT_TABLE_HPP
 
 #include <string>
 #include <unordered_map>
@@ -13,12 +13,12 @@
 
 namespace tinylex
 {
-    class DocumentIdTable
+    class DocumentTable
     {
     public:
-        DocumentIdTable();
+        DocumentTable();
 
-        virtual ~DocumentIdTable();
+        virtual ~DocumentTable();
 
         void setIds(const std::string& filepath);
 
@@ -37,4 +37,4 @@ namespace tinylex
     };
 }
 
-#endif //TINYLEXER_DOCUMENT_ID_TABLE_HPP
+#endif //TINYLEXER_DOCUMENT_TABLE_HPP

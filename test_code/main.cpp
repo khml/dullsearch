@@ -330,7 +330,7 @@ TEST(TestDocumentIdTable, lookupFiles)
     fileB.flush();
     fileC.flush();
 
-    tinylex::DocumentIdTable table;
+    tinylex::DocumentTable table;
     table.setIds(filepathA);
     table.setIds(filepathB);
 
