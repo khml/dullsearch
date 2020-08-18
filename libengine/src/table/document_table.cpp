@@ -8,17 +8,17 @@
 #include <tinylexer/filer/file.hpp>
 #include <tinylexer/lexer/lexer.hpp>
 #include <tinylexer/filer/utilities.hpp>
-#include <tinylexer/table/document_id_table.hpp>
+#include <tinylexer/table/document_table.hpp>
 
 namespace tinylex
 {
-    DocumentIdTable::DocumentIdTable()
+    DocumentTable::DocumentTable()
     = default;
 
-    DocumentIdTable::~DocumentIdTable()
+    DocumentTable::~DocumentTable()
     = default;
 
-    void DocumentIdTable::setIds(const std::string& filepath)
+    void DocumentTable::setIds(const std::string& filepath)
     {
         if (docTable.contain(filepath))
             return;
@@ -30,7 +30,7 @@ namespace tinylex
             relationTable[wordId].emplace(docId);
     }
 
-    std::vector<std::string> DocumentIdTable::lookupFiles(const std::string& word)
+    std::vector<std::string> DocumentTable::lookupFiles(const std::string& word)
     {
         std::vector<std::string> files;
         if (!wordTable.contain(word))
@@ -43,7 +43,7 @@ namespace tinylex
         return files;
     }
 
-    void DocumentIdTable::dump(const std::string& filepath) const
+    void DocumentTable::dump(const std::string& filepath) const
     {
         std::vector<std::string> lines;
         lines.reserve(wordTable.size() + docTable.size() + relationTable.size());
@@ -73,7 +73,7 @@ namespace tinylex
         writeLinesToFile(filepath, lines);
     }
 
-    void DocumentIdTable::restore(const std::string& filepath)
+    void DocumentTable::restore(const std::string& filepath)
     {
         if (!isExist(filepath))
             return;
@@ -117,7 +117,7 @@ namespace tinylex
         }
     }
 
-    void DocumentIdTable::clear()
+    void DocumentTable::clear()
     {
         wordTable.clear();
         docTable.clear();
