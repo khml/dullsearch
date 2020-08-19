@@ -45,4 +45,4 @@ jobs:
         make -j4
     - name: test tinylex
       run: |
-        ./build/test_code/test_tinylex
+        ./build/test_code/test_dullsearch
