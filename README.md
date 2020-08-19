@@ -2,7 +2,8 @@
 
 ![ubuntu18.04](https://github.com/khml/tinylexer/workflows/ubuntu18.04/badge.svg)
 
-[![CodeFactor](https://www.codefactor.io/repository/github/khml/tinylexer/badge)](https://www.codefactor.io/repository/github/khml/tinylexer)[![BCH compliance](https://bettercodehub.com/edge/badge/khml/tinylexer?branch=stable)](https://bettercodehub.com/)
+[![CodeFactor](https://www.codefactor.io/repository/github/khml/dullsearch/badge)](https://www.codefactor.io/repository/github/khml/dullsearch)
+[![BCH compliance](https://bettercodehub.com/edge/badge/khml/tinylexer?branch=stable)](https://bettercodehub.com/)
 
 # dependencies
 - GCC 8.0 and more
