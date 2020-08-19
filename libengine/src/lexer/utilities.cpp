@@ -5,12 +5,12 @@
 #include <regex>
 #include <string>
 
-#include <tinylexer/lexer/utilities.hpp>
+#include <dullsearch/lexer/utilities.hpp>
 
 using std::regex;
 using std::string;
 
-namespace tinylex
+namespace dullsearch
 {
     bool isDigit(const string& str)
     {

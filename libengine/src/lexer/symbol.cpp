@@ -4,11 +4,11 @@
 
 #include <algorithm>
 
-#include <tinylexer/lexer/symbol.hpp>
+#include <dullsearch/lexer/symbol.hpp>
 
 using std::string;
 
-namespace tinylex
+namespace dullsearch
 {
     namespace symbol
     {

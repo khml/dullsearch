@@ -5,7 +5,7 @@
 #ifndef TINYLEXER_LEXER_HPP
 #define TINYLEXER_LEXER_HPP
 
-#include <tinylexer/lexer/lexer.hpp>
-#include <tinylexer/lexer/utilities.hpp>
+#include <dullsearch/lexer/lexer.hpp>
+#include <dullsearch/lexer/utilities.hpp>
 
 #endif //TINYLEXER_LEXER_HPP

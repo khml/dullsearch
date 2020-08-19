@@ -9,9 +9,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include <tinylexer/table/word_id_table.hpp>
+#include <dullsearch/table/word_id_table.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     class DocumentTable
     {

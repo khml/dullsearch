@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace tinylex
+namespace dullsearch
 {
     bool isDigit(const std::string& str);
 

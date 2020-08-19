@@ -5,10 +5,10 @@
 #include <iostream>
 #include <stdexcept>
 
-#include <tinylexer/table/word_id_table.hpp>
-#include <tinylexer/filer/file.hpp>
+#include <dullsearch/table/word_id_table.hpp>
+#include <dullsearch/filer/file.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     WordIdTable::WordIdTable()
     = default;

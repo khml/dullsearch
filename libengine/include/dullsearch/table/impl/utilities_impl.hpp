@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-namespace tinylex
+namespace dullsearch
 {
     template<typename T>
     void printVec(const std::vector<T>& container)

@@ -5,9 +5,9 @@
 #include <fstream>
 #include <stdexcept>
 
-#include <tinylexer/filer/file.hpp>
+#include <dullsearch/filer/file.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     std::vector<std::string> readFile(const std::string& filepath)
     {

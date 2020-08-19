@@ -2,11 +2,11 @@
 // Created by KHML on 2020/07/11.
 //
 
-#include <tinylexer/filer/read_csv.hpp>
-#include <tinylexer/filer/file.hpp>
-#include <tinylexer/filer/utilities.hpp>
+#include <dullsearch/filer/read_csv.hpp>
+#include <dullsearch/filer/file.hpp>
+#include <dullsearch/filer/utilities.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     std::vector<std::vector<std::string>> readCsvFile(const std::string& filepath)
     {

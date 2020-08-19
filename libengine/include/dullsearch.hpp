@@ -5,8 +5,8 @@
 #ifndef TINYLEXER_TINYLEX_HPP
 #define TINYLEXER_TINYLEX_HPP
 
-#include <tinylexer/lexer.hpp>
-#include <tinylexer/table.hpp>
-#include <tinylexer/filer.hpp>
+#include <dullsearch/lexer.hpp>
+#include <dullsearch/table.hpp>
+#include <dullsearch/filer.hpp>
 
 #endif //TINYLEXER_TINYLEX_HPP

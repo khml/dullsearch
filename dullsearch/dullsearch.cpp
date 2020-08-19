@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include <tinylexer.hpp>
+#include <dullsearch.hpp>
 
 static const char* VERSION = "alpha-0.0.1";
 static const char* APP_NAME = "TinyLex";
@@ -64,13 +64,13 @@ void showHelp()
               << "-h, --help     Display help" << std::endl;
 }
 
-void indexing(const std::string& filepath, tinylex::DocumentTable& table)
+void indexing(const std::string& filepath, dullsearch::DocumentTable& table)
 {
     table.setIds(filepath);
     table.dump(TINYLEX_FILENAME);
 }
 
-void search(const std::string& word, tinylex::DocumentTable& table)
+void search(const std::string& word, dullsearch::DocumentTable& table)
 {
     std::cout << "word: " << word << std::endl;
     for (const auto& filepath : table.lookupFiles(word))
@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    tinylex::DocumentTable docTable;
+    dullsearch::DocumentTable docTable;
     docTable.restore(TINYLEX_FILENAME);
 
     for (int pos = 1; pos < argc; pos++)

@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace tinylex
+namespace dullsearch
 {
     void uniqSort(std::vector<size_t>& strContainer);
 
@@ -21,6 +21,6 @@ namespace tinylex
     void printVec(const std::vector<std::string>& container);
 }
 
-#include <tinylexer/table/impl/utilities_impl.hpp>
+#include <dullsearch/table/impl/utilities_impl.hpp>
 
 #endif //TINYLEXER_TABLE_UTILITIES_HPP

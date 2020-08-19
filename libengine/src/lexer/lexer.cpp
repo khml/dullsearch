@@ -4,13 +4,13 @@
 
 #include <stdexcept>
 
-#include <tinylexer/lexer/lexer.hpp>
-#include <tinylexer/lexer/symbol.hpp>
-#include <tinylexer/lexer/utilities.hpp>
+#include <dullsearch/lexer/lexer.hpp>
+#include <dullsearch/lexer/symbol.hpp>
+#include <dullsearch/lexer/utilities.hpp>
 
 using std::string;
 
-namespace tinylex
+namespace dullsearch
 {
     std::vector<std::string> lex(const string& line)
     {

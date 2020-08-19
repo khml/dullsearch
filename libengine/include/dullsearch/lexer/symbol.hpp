@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace tinylex
+namespace dullsearch
 {
     namespace symbol
     {

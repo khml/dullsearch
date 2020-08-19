@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace tinylex
+namespace dullsearch
 {
     std::vector<std::vector<std::string>> readCsvFile(const std::string& filepath);
 }

@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace tinylex
+namespace dullsearch
 {
     std::vector<std::string> listDir(const std::string& path);
 

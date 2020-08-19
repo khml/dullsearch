@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <tinylexer.hpp>
+#include <dullsearch.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     }
     const std::string pathname = argv[1];
 
-    const std::vector<std::string> filenames = tinylex::listDirRecursive(pathname);
+    const std::vector<std::string> filenames = dullsearch::listDirRecursive(pathname);
     for(const std::string& filename:filenames)
         std::cout << filename << std::endl;
 

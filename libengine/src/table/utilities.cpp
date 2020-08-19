@@ -6,9 +6,9 @@
 #include <iostream>
 #include <utility>
 
-#include <tinylexer/table/utilities.hpp>
+#include <dullsearch/table/utilities.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     void uniqSort(std::vector<size_t>& strContainer)
     {

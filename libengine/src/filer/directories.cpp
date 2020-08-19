@@ -5,12 +5,12 @@
 #include <dirent.h>
 #include <filesystem>
 
-#include <tinylexer/filer/directories.hpp>
-#include <tinylexer/filer/utilities.hpp>
+#include <dullsearch/filer/directories.hpp>
+#include <dullsearch/filer/utilities.hpp>
 
 namespace fs = std::filesystem;
 
-namespace tinylex
+namespace dullsearch
 {
     std::vector<std::string> listDir(const std::string& path)
     {

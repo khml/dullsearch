@@ -5,4 +5,4 @@ project(example)
 # example app
 set(EXAMPLE_APP example)
 add_executable(${EXAMPLE_APP} example.cpp)
-target_link_libraries(${EXAMPLE_APP} PRIVATE lexengine)
+target_link_libraries(${EXAMPLE_APP} PRIVATE dullengine)

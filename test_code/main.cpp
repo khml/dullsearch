@@ -8,18 +8,18 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
-#include <tinylexer.hpp>
-#include <tinylexer/lexer/symbol.hpp>
+#include <dullsearch.hpp>
+#include <dullsearch/lexer/symbol.hpp>
 
 TEST(TestLexer, lex)
 {
-    EXPECT_THAT(tinylex::lex("Hello World!"),
+    EXPECT_THAT(dullsearch::lex("Hello World!"),
         testing::ElementsAre("Hello", "World", "!"));
 
-    EXPECT_THAT(tinylex::lex("1+2*3/6"),
+    EXPECT_THAT(dullsearch::lex("1+2*3/6"),
         testing::ElementsAre("1", "+", "2", "*", "3", "/", "6"));
 
-    EXPECT_THAT(tinylex::lex(
+    EXPECT_THAT(dullsearch::lex(
         "class HelloWorld { public static void main(String[] args) { System.out.println(\"Hello, world.\"); } }"),
         testing::ElementsAre("class", "HelloWorld", "{", "public", "static", "void", "main", "(", "String", "[", "]",
             "args", ")", "{", "System", ".", "out", ".", "println", "(", "Hello", "world", ".", ")", ";", "}", "}"));
@@ -27,131 +27,131 @@ TEST(TestLexer, lex)
 
 TEST(TestSymbol, toSymbol)
 {
-    EXPECT_EQ(tinylex::symbol::toSymbol("+"), tinylex::symbol::ADD);
-    EXPECT_EQ(tinylex::symbol::toSymbol("-"), tinylex::symbol::SUB);
-    EXPECT_EQ(tinylex::symbol::toSymbol("*"), tinylex::symbol::ASTERISK);
-    EXPECT_EQ(tinylex::symbol::toSymbol("/"), tinylex::symbol::SLASH);
-    EXPECT_EQ(tinylex::symbol::toSymbol("@"), tinylex::symbol::AT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("="), tinylex::symbol::EQUAL);
-    EXPECT_EQ(tinylex::symbol::toSymbol(")"), tinylex::symbol::PARENTHESISE_RIGHT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("("), tinylex::symbol::PARENTHESIS_LEFT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("]"), tinylex::symbol::BRACKET_RIGHT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("["), tinylex::symbol::BRACKET_LEFT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("}"), tinylex::symbol::BRACE_RIGHT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("{"), tinylex::symbol::BRACE_LEFT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("."), tinylex::symbol::DOT);
-    EXPECT_EQ(tinylex::symbol::toSymbol(","), tinylex::symbol::COMMA);
-    EXPECT_EQ(tinylex::symbol::toSymbol(":"), tinylex::symbol::COLON);
-    EXPECT_EQ(tinylex::symbol::toSymbol(";"), tinylex::symbol::SEMICOLON);
-    EXPECT_EQ(tinylex::symbol::toSymbol("?"), tinylex::symbol::INTERROGATION);
-    EXPECT_EQ(tinylex::symbol::toSymbol(">"), tinylex::symbol::GRATER_THAN);
-    EXPECT_EQ(tinylex::symbol::toSymbol("<"), tinylex::symbol::LESSER_THAN);
-    EXPECT_EQ(tinylex::symbol::toSymbol("\'"), tinylex::symbol::APOSTROPHE);
-    EXPECT_EQ(tinylex::symbol::toSymbol("\""), tinylex::symbol::QUOTATION);
-    EXPECT_EQ(tinylex::symbol::toSymbol("&"), tinylex::symbol::AMPERSAND);
-    EXPECT_EQ(tinylex::symbol::toSymbol("%"), tinylex::symbol::PERCENT);
-    EXPECT_EQ(tinylex::symbol::toSymbol("$"), tinylex::symbol::DOLLAR);
-    EXPECT_EQ(tinylex::symbol::toSymbol("#"), tinylex::symbol::SHARP);
-    EXPECT_EQ(tinylex::symbol::toSymbol("|"), tinylex::symbol::PIPE);
-    EXPECT_EQ(tinylex::symbol::toSymbol("_"), tinylex::symbol::UNDER_BAR);
-    EXPECT_EQ(tinylex::symbol::toSymbol("\\"), tinylex::symbol::BACKSLASH);
-    EXPECT_EQ(tinylex::symbol::toSymbol(" "), tinylex::symbol::WHITESPACE);
-    EXPECT_EQ(tinylex::symbol::toSymbol("\n"), tinylex::symbol::NEW_LINE);
-    EXPECT_EQ(tinylex::symbol::toSymbol("=="), tinylex::symbol::EQUIVALENCE);
-    EXPECT_EQ(tinylex::symbol::toSymbol(">="), tinylex::symbol::GRATER);
-    EXPECT_EQ(tinylex::symbol::toSymbol("<="), tinylex::symbol::LESSER);
-    EXPECT_EQ(tinylex::symbol::toSymbol("++"), tinylex::symbol::INCREMENTAL);
-    EXPECT_EQ(tinylex::symbol::toSymbol("--"), tinylex::symbol::DECREMENTAL);
-    EXPECT_EQ(tinylex::symbol::toSymbol("&&"), tinylex::symbol::AND);
-    EXPECT_EQ(tinylex::symbol::toSymbol("||"), tinylex::symbol::OR);
-    EXPECT_EQ(tinylex::symbol::toSymbol("/*"), tinylex::symbol::COMMENT_START);
-    EXPECT_EQ(tinylex::symbol::toSymbol("*/"), tinylex::symbol::COMMENT_END);
-    EXPECT_EQ(tinylex::symbol::toSymbol("->"), tinylex::symbol::ARROW);
-    EXPECT_EQ(tinylex::symbol::toSymbol("=>"), tinylex::symbol::FAT_ARROW);
-    EXPECT_EQ(tinylex::symbol::toSymbol("!"), tinylex::symbol::EXCLAMATION);
-    EXPECT_EQ(tinylex::symbol::toSymbol("a"), tinylex::symbol::IDENTIFIER);
-    EXPECT_EQ(tinylex::symbol::toSymbol("0"), tinylex::symbol::IDENTIFIER);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("+"), dullsearch::symbol::ADD);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("-"), dullsearch::symbol::SUB);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("*"), dullsearch::symbol::ASTERISK);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("/"), dullsearch::symbol::SLASH);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("@"), dullsearch::symbol::AT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("="), dullsearch::symbol::EQUAL);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(")"), dullsearch::symbol::PARENTHESISE_RIGHT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("("), dullsearch::symbol::PARENTHESIS_LEFT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("]"), dullsearch::symbol::BRACKET_RIGHT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("["), dullsearch::symbol::BRACKET_LEFT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("}"), dullsearch::symbol::BRACE_RIGHT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("{"), dullsearch::symbol::BRACE_LEFT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("."), dullsearch::symbol::DOT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(","), dullsearch::symbol::COMMA);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(":"), dullsearch::symbol::COLON);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(";"), dullsearch::symbol::SEMICOLON);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("?"), dullsearch::symbol::INTERROGATION);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(">"), dullsearch::symbol::GRATER_THAN);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("<"), dullsearch::symbol::LESSER_THAN);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("\'"), dullsearch::symbol::APOSTROPHE);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("\""), dullsearch::symbol::QUOTATION);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("&"), dullsearch::symbol::AMPERSAND);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("%"), dullsearch::symbol::PERCENT);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("$"), dullsearch::symbol::DOLLAR);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("#"), dullsearch::symbol::SHARP);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("|"), dullsearch::symbol::PIPE);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("_"), dullsearch::symbol::UNDER_BAR);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("\\"), dullsearch::symbol::BACKSLASH);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(" "), dullsearch::symbol::WHITESPACE);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("\n"), dullsearch::symbol::NEW_LINE);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("=="), dullsearch::symbol::EQUIVALENCE);
+    EXPECT_EQ(dullsearch::symbol::toSymbol(">="), dullsearch::symbol::GRATER);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("<="), dullsearch::symbol::LESSER);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("++"), dullsearch::symbol::INCREMENTAL);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("--"), dullsearch::symbol::DECREMENTAL);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("&&"), dullsearch::symbol::AND);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("||"), dullsearch::symbol::OR);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("/*"), dullsearch::symbol::COMMENT_START);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("*/"), dullsearch::symbol::COMMENT_END);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("->"), dullsearch::symbol::ARROW);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("=>"), dullsearch::symbol::FAT_ARROW);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("!"), dullsearch::symbol::EXCLAMATION);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("a"), dullsearch::symbol::IDENTIFIER);
+    EXPECT_EQ(dullsearch::symbol::toSymbol("0"), dullsearch::symbol::IDENTIFIER);
 }
 
 TEST(TestUtilities, isDigit)
 {
     for (int i = 0; i < 20; i++)
-        EXPECT_TRUE(tinylex::isDigit(std::to_string(i)));
+        EXPECT_TRUE(dullsearch::isDigit(std::to_string(i)));
 
-    EXPECT_FALSE(tinylex::isDigit("a"));
-    EXPECT_FALSE(tinylex::isDigit("1.1"));
+    EXPECT_FALSE(dullsearch::isDigit("a"));
+    EXPECT_FALSE(dullsearch::isDigit("1.1"));
 }
 
 TEST(TestUtilities, isFloat)
 {
-    EXPECT_TRUE(tinylex::isFloat("1.1f"));
-    EXPECT_TRUE(tinylex::isFloat(".11f"));
+    EXPECT_TRUE(dullsearch::isFloat("1.1f"));
+    EXPECT_TRUE(dullsearch::isFloat(".11f"));
 
-    EXPECT_FALSE(tinylex::isFloat("10f"));
-    EXPECT_FALSE(tinylex::isFloat("1.1.1f"));
-    EXPECT_FALSE(tinylex::isFloat("1.1"));
-    EXPECT_FALSE(tinylex::isFloat("f"));
-    EXPECT_FALSE(tinylex::isFloat("a"));
+    EXPECT_FALSE(dullsearch::isFloat("10f"));
+    EXPECT_FALSE(dullsearch::isFloat("1.1.1f"));
+    EXPECT_FALSE(dullsearch::isFloat("1.1"));
+    EXPECT_FALSE(dullsearch::isFloat("f"));
+    EXPECT_FALSE(dullsearch::isFloat("a"));
 }
 
 TEST(TestUtilities, isDouble)
 {
-    EXPECT_TRUE(tinylex::isDouble("1.1"));
-    EXPECT_TRUE(tinylex::isDouble("10.1"));
-    EXPECT_TRUE(tinylex::isDouble("1.01"));
-    EXPECT_TRUE(tinylex::isDouble(".100"));
+    EXPECT_TRUE(dullsearch::isDouble("1.1"));
+    EXPECT_TRUE(dullsearch::isDouble("10.1"));
+    EXPECT_TRUE(dullsearch::isDouble("1.01"));
+    EXPECT_TRUE(dullsearch::isDouble(".100"));
 
-    EXPECT_FALSE(tinylex::isDouble("100"));
-    EXPECT_FALSE(tinylex::isDouble("a"));
+    EXPECT_FALSE(dullsearch::isDouble("100"));
+    EXPECT_FALSE(dullsearch::isDouble("a"));
 }
 
 TEST(TestUtilities, isIdentifier)
 {
-    EXPECT_TRUE(tinylex::isIdentifier("hello"));
-    EXPECT_TRUE(tinylex::isIdentifier("_hello"));
-    EXPECT_TRUE(tinylex::isIdentifier("hello_"));
-    EXPECT_TRUE(tinylex::isIdentifier("Hello"));
-    EXPECT_TRUE(tinylex::isIdentifier("WORLD"));
-    EXPECT_TRUE(tinylex::isIdentifier("a100"));
+    EXPECT_TRUE(dullsearch::isIdentifier("hello"));
+    EXPECT_TRUE(dullsearch::isIdentifier("_hello"));
+    EXPECT_TRUE(dullsearch::isIdentifier("hello_"));
+    EXPECT_TRUE(dullsearch::isIdentifier("Hello"));
+    EXPECT_TRUE(dullsearch::isIdentifier("WORLD"));
+    EXPECT_TRUE(dullsearch::isIdentifier("a100"));
 }
 
 TEST(TestUtilities, splitByComma)
 {
-    EXPECT_THAT(tinylex::splitByComma("1,2,3,4,5"),
+    EXPECT_THAT(dullsearch::splitByComma("1,2,3,4,5"),
         testing::ElementsAre("1", "2", "3", "4", "5"));
 
-    EXPECT_THAT(tinylex::splitByComma("1, \"2\", ',3', a'4', 5"),
+    EXPECT_THAT(dullsearch::splitByComma("1, \"2\", ',3', a'4', 5"),
         testing::ElementsAre("1", "2", ",3", "a'4'", "5"));
 
-    EXPECT_THAT(tinylex::splitByComma("1"),
+    EXPECT_THAT(dullsearch::splitByComma("1"),
         testing::ElementsAre("1"));
 
-    EXPECT_THAT(tinylex::splitByComma("1,"),
+    EXPECT_THAT(dullsearch::splitByComma("1,"),
         testing::ElementsAre("1"));
 }
 
 TEST(TestUtilities, uniqSort)
 {
     std::vector<size_t> source = {100, 1, 20, 2, 5, 100};
-    tinylex::uniqSort(source);
+    dullsearch::uniqSort(source);
     EXPECT_THAT(source, testing::ElementsAre(1, 2, 5, 20, 100));
 }
 
 TEST(TestUtilities, toStr)
 {
     std::vector<size_t> source = {100, 1, 20, 2, 5};
-    EXPECT_EQ(tinylex::toStr(source), "100, 1, 20, 2, 5");
+    EXPECT_EQ(dullsearch::toStr(source), "100, 1, 20, 2, 5");
 }
 
 TEST(TestUtilities, isDir)
 {
-    EXPECT_TRUE(tinylex::isDir("."));
-    EXPECT_TRUE(tinylex::isDir(".."));
+    EXPECT_TRUE(dullsearch::isDir("."));
+    EXPECT_TRUE(dullsearch::isDir(".."));
 
     const std::string filepath("TestUtilities_isDir_dummy.txt");
     std::ofstream file(filepath);
     file.flush();
-    EXPECT_FALSE(tinylex::isDir(filepath));
+    EXPECT_FALSE(dullsearch::isDir(filepath));
 }
 
 TEST(TestReadCsv, readCsvFile)
@@ -160,18 +160,18 @@ TEST(TestReadCsv, readCsvFile)
     std::ofstream file(filepath);
     file << "0,1,2,3,4" << std::endl;
     file.flush();
-    EXPECT_EQ(tinylex::readCsvFile(filepath).size(), (size_t) 1);
-    EXPECT_THAT(tinylex::readCsvFile(filepath)[0], testing::ElementsAre("0", "1", "2", "3", "4"));
+    EXPECT_EQ(dullsearch::readCsvFile(filepath).size(), (size_t) 1);
+    EXPECT_THAT(dullsearch::readCsvFile(filepath)[0], testing::ElementsAre("0", "1", "2", "3", "4"));
 
     file << "5, 6,  7" << std::endl;
     file.flush();
-    EXPECT_EQ(tinylex::readCsvFile(filepath).size(), (size_t) 2);
-    EXPECT_THAT(tinylex::readCsvFile(filepath)[1], testing::ElementsAre("5", "6", "7"));
+    EXPECT_EQ(dullsearch::readCsvFile(filepath).size(), (size_t) 2);
+    EXPECT_THAT(dullsearch::readCsvFile(filepath)[1], testing::ElementsAre("5", "6", "7"));
 }
 
 TEST(TestWordIdTable, getId)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     EXPECT_EQ(table.getId("Hello"), (size_t) 1);
     EXPECT_EQ(table.getId("Hello"), (size_t) 1);
 
@@ -181,7 +181,7 @@ TEST(TestWordIdTable, getId)
 
 TEST(TestWordIdTable, getIds)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     std::vector<std::size_t> ids = table.getIds(words);
     EXPECT_THAT(ids, testing::ElementsAre(1, 2, 3, 4, 5, 1, 2, 6, 3));
@@ -196,18 +196,18 @@ TEST(TestWordIdTable, getIds)
 
 TEST(TestWordIdTable, getIdsWithUniqSort)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     std::vector<std::size_t> ids_sorted = table.getIdsWithUniqSort(words);
 
     std::vector<std::size_t> ids = table.getIds(words);
-    tinylex::uniqSort(ids);
+    dullsearch::uniqSort(ids);
     EXPECT_THAT(ids_sorted, ids);
 }
 
 TEST(TestWordIdTable, contain)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     const std::string key = "Hello";
     EXPECT_FALSE(table.contain(key));
     EXPECT_FALSE(table.contain(key));
@@ -218,7 +218,7 @@ TEST(TestWordIdTable, contain)
 
 TEST(TestWordIdTable, getValue)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     const std::string key = "Hello";
     const size_t id = table.getId(key);
     EXPECT_EQ(table.getValue(id), key);
@@ -226,7 +226,7 @@ TEST(TestWordIdTable, getValue)
 
 TEST(TestWordIdTable, unwrap)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     std::vector<std::size_t> ids = table.getIds(words);
     std::unordered_map<std::string, size_t> unwrapTable = table.unwrap();
@@ -241,7 +241,7 @@ TEST(TestWordIdTable, unwrap)
 
 TEST(TestWordIdTable, values)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     (void) table.getIds(words);
     std::vector<std::string> values = table.values();
@@ -252,7 +252,7 @@ TEST(TestWordIdTable, values)
 
 TEST(TestWordIdTable, size)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     (void) table.getIds(words);
 
@@ -261,8 +261,8 @@ TEST(TestWordIdTable, size)
 
 TEST(TestWordIdTable, dump)
 {
-    const std::string filename = "TestWordIdTable_dump.tinylex";
-    tinylex::WordIdTable table;
+    const std::string filename = "TestWordIdTable_dump.dullsearch";
+    dullsearch::WordIdTable table;
     const std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     const std::vector<size_t> ids = table.getIds(words);
     table.dump(filename);
@@ -280,9 +280,9 @@ TEST(TestWordIdTable, dump)
 
 TEST(TestWordIdTable, restore)
 {
-    const std::string filename = "TestWordIdTable_restore.tinylex";
+    const std::string filename = "TestWordIdTable_restore.dullsearch";
     const std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
-    tinylex::WordIdTable tableA;
+    dullsearch::WordIdTable tableA;
     const std::vector<size_t> ids = tableA.getIds(words);
 
     std::ofstream file(filename);
@@ -291,14 +291,14 @@ TEST(TestWordIdTable, restore)
         file << word << std::endl;
     file.flush();
 
-    tinylex::WordIdTable tableB;
+    dullsearch::WordIdTable tableB;
     tableB.restore(filename);
     EXPECT_THAT(tableB.getIds(words), testing::Pointwise(testing::Eq(), ids));
 }
 
 TEST(TestWordIdTable, clear)
 {
-    tinylex::WordIdTable table;
+    dullsearch::WordIdTable table;
     std::vector<std::string> words = {"Hello", "World", ".", "This", "Is", "Hello", "World", "Code", "."};
     std::vector<std::size_t> ids = table.getIds(words);
     std::unordered_map<std::string, size_t> unwrapTable = table.unwrap();
@@ -330,7 +330,7 @@ TEST(TestDocumentIdTable, lookupFiles)
     fileB.flush();
     fileC.flush();
 
-    tinylex::DocumentTable table;
+    dullsearch::DocumentTable table;
     table.setIds(filepathA);
     table.setIds(filepathB);
 

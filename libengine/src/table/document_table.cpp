@@ -5,12 +5,12 @@
 #include <stdexcept>
 #include <sstream>
 
-#include <tinylexer/filer/file.hpp>
-#include <tinylexer/lexer/lexer.hpp>
-#include <tinylexer/filer/utilities.hpp>
-#include <tinylexer/table/document_table.hpp>
+#include <dullsearch/filer/file.hpp>
+#include <dullsearch/lexer/lexer.hpp>
+#include <dullsearch/filer/utilities.hpp>
+#include <dullsearch/table/document_table.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     DocumentTable::DocumentTable()
     = default;

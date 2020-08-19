@@ -4,11 +4,11 @@
 
 #include <sys/stat.h>
 
-#include <tinylexer/filer/utilities.hpp>
-#include <tinylexer/lexer/symbol.hpp>
-#include <tinylexer/lexer/lexer.hpp>
+#include <dullsearch/filer/utilities.hpp>
+#include <dullsearch/lexer/symbol.hpp>
+#include <dullsearch/lexer/lexer.hpp>
 
-namespace tinylex
+namespace dullsearch
 {
     mode_t getMode(const std::string& path)
     {
