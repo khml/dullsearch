@@ -8,5 +8,4 @@ set(CMAKE_CXX_FLAGS "-Wall")
 
 add_subdirectory(libengine)
 add_subdirectory(test_code)
-add_subdirectory(example)
 add_subdirectory(dullsearch)
